@@ -1,0 +1,21 @@
+:root {
+  --primary: #D10000;
+  --background-light: #f8f5f5;
+  --background-dark: #121212;
+  --secondary-dark: #1A1A1A;
+  --border-dark: #4A4A4A;
+  --text-light: #F0F0F0;
+  --text-muted: #A0A0A0;
+}
+
+/* Para usar con clases Tailwind */
+.bg-primary { background-color: var(--primary); }
+.text-primary { color: var(--primary); }
+
+.bg-background-dark { background-color: var(--background-dark); }
+.bg-secondary-dark { background-color: var(--secondary-dark); }
+
+.border-dark { border-color: var(--border-dark); }
+
+.text-light { color: var(--text-light); }
+.text-muted { color: var(--text-muted); }

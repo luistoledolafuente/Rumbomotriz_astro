@@ -1,0 +1,40 @@
+import forms from '@tailwindcss/forms';
+import containerQueries from '@tailwindcss/container-queries';
+
+export default {
+  
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  
+  
+  darkMode: "class", 
+  
+  theme: {
+    extend: {
+      
+      colors: {
+        "primary": "#D10000",
+        "background-light": "#f8f5f5",
+        "background-dark": "#121212",
+        "secondary-dark": "#1A1A1A",
+        "border-dark": "#4A4A4A",
+        "text-light": "#F0F0F0",
+        "text-muted": "#A0A0A0",
+      },
+      fontFamily: {
+        "display": ["Inter", "sans-serif"]
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem", 
+        "lg": "0.5rem", 
+        "xl": "0.75rem", 
+        "full": "9999px"
+      },
+    },
+  },
+  
+  
+  plugins: [
+    forms,
+    containerQueries,
+  ],
+}

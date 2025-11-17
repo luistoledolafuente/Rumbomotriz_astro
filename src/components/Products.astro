@@ -1,0 +1,48 @@
+---
+import ProductCard from "./ProductCard.astro";
+---
+
+<section class="w-full py-20" id="neumaticos">
+  <div class="flex flex-col gap-10">
+    
+    <!-- Título y descripción -->
+    <div class="flex flex-col gap-4 text-center items-center">
+      <h2
+        class="text-white text-3xl md:text-4xl font-black leading-tight tracking-tighter max-w-2xl"
+      >
+        Catálogo de Neumáticos para Minería
+      </h2>
+
+      <p class="text-text-muted text-base font-normal leading-normal max-w-3xl">
+        Explore nuestra selección de neumáticos especializados, diseñados
+        para ofrecer un rendimiento superior en cualquier terreno.
+      </p>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <ProductCard
+        title="Modelo Terra-GRIP 5000"
+        description="Ideal para camiones de acarreo en minas a cielo abierto. Máxima tracción y resistencia a cortes."
+        imgSrc="/images/tire-1.png"
+        imgAlt="Close-up of a large, heavy-duty mining tire tread"
+      />
+
+      <ProductCard
+        title="Modelo Rock-HAULER 22"
+        description="Diseñado para cargadores frontales y maquinaria de movimiento de tierras. Compuesto ultra resistente."
+        imgSrc="/images/tire-2.png"
+        imgAlt="Angled view of a heavy-duty mining tire with deep grooves"
+      />
+
+      <ProductCard
+        title="Modelo Subterra-PRO X"
+        description="Neumático de bajo perfil para minería subterránea. Flancos reforzados para máxima seguridad."
+        imgSrc="/images/tire-3.png"
+        imgAlt="Side profile of a massive mining tire, showing its depth and structure"
+      />
+
+    </div>
+  </div>
+</section>

@@ -1,8 +1,17 @@
+
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-
+/* === REGLA GLOBAL DE CSS PARA EL MODELO DE CAJA === */
+/* Asegura que el padding y el borde se incluyan en el ancho/alto del elemento */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Inter', sans-serif;
+  padding-right: 10rem;
+  padding-left: 10rem;
 }

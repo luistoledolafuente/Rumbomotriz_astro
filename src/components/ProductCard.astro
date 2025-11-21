@@ -10,9 +10,9 @@ const { title, description, imgSrc, imgAlt } = Astro.props;
 ---
 
 <div
-  class="flex flex-col rounded-xl border border-border-dark bg-secondary-dark overflow-hidden group"
+  class="flex flex-col rounded-xl border border-theme bg-background-card overflow-hidden group"
 >
-  <div class="aspect-square bg-background-dark flex items-center justify-center p-4">
+  <div class="aspect-square bg-background-main flex items-center justify-center p-4">
     
     <img
       class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
@@ -26,11 +26,11 @@ const { title, description, imgSrc, imgAlt } = Astro.props;
   </div>
 
   <div class="p-6 flex flex-col gap-4 flex-grow">
-    <h3 class="text-white text-xl font-bold">{title}</h3>
+    <h3 class="text-light text-xl font-bold">{title}</h3>
     <p class="text-text-muted text-sm flex-grow">{description}</p>
 
     <a
-      class="flex mt-2 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-border-dark text-white text-sm font-bold leading-normal hover:bg-primary transition-colors"
+      class="flex mt-2 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-border-theme text-light text-sm font-bold leading-normal hover:bg-primary transition-colors"
       href="#contacto"
     >
       <span class="truncate">Solicitar Información</span>

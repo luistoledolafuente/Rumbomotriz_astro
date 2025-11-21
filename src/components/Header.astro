@@ -1,11 +1,13 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
 <header
-  class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-border-dark"
+  class="sticky top-0 z-50 w-full bg-background-main/80 backdrop-blur-sm border-b border-theme"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
 
-      <!-- Logo y Título -->
-      <div class="flex items-center gap-4 text-text-light">
+      <div class="flex items-center gap-4 text-light">
         <div class="text-primary size-6">
           <svg
             fill="none"
@@ -21,7 +23,6 @@
         <h2 class="text-xl font-bold">Rumbomotriz</h2>
       </div>
 
-      <!-- Navegación -->
       <nav class="hidden md:flex items-center gap-8">
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#inicio">Inicio</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#sobre-nosotros">Sobre Nosotros</a>
@@ -30,14 +31,16 @@
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#contacto">Contacto</a>
       </nav>
 
-      <!-- Botón de Cotizar -->
-      <a
-        class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
-        href="#contacto"
-      >
-        <span class="truncate">Cotizar Ahora</span>
-      </a>
+      <div class="flex items-center gap-4">
+        <ThemeToggle />
 
-    </div>
+        <a
+          class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+          href="#contacto"
+        >
+          <span class="truncate">Cotizar Ahora</span>
+        </a>
+      </div>
+      </div>
   </div>
 </header>

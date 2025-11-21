@@ -1,10 +1,28 @@
+/* src/styles/custom.css */
+
+/* === MODO CLARO (Valores por defecto) === */
 :root {
   --primary: #D10000;
-  --background-light: #f8f5f5;
-  --background-dark: #121212;
-  --secondary-dark: #1A1A1A;
-  --border-dark: #4A4A4A;
-  --text-light: #F0F0F0;
+  
+  /* Fondo y Border */
+  --background-main: #f8f5f5; /* Fondo del Body */
+  --background-card: #ffffff; /* Fondo de las tarjetas en modo claro */
+  --border-color: #cccccc; /* Borde en modo claro */
+  
+  /* Texto */
+  --text-main: #121212; /* Texto principal (era --text-light) */
+  --text-muted: #A0A0A0;
+}
+
+/* === MODO OSCURO (Sobreescribe los valores por defecto) === */
+.dark {
+  /* Fondo y Border */
+  --background-main: #121212;
+  --background-card: #1A1A1A;
+  --border-color: #4A4A4A;
+  
+  /* Texto */
+  --text-main: #F0F0F0;
   --text-muted: #A0A0A0;
 }
 
@@ -12,10 +30,16 @@
 .bg-primary { background-color: var(--primary); }
 .text-primary { color: var(--primary); }
 
-.bg-background-dark { background-color: var(--background-dark); }
-.bg-secondary-dark { background-color: var(--secondary-dark); }
+/* Renombrando para un uso más claro: */
+.bg-background-main { background-color: var(--background-main); }
+.bg-background-card { background-color: var(--background-card); } /* Usado para tarjetas */
 
-.border-dark { border-color: var(--border-dark); }
+.border-theme { border-color: var(--border-color); } /* Borde dinámico */
 
-.text-light { color: var(--text-light); }
+.text-light { color: var(--text-main); } /* El texto principal ahora es 'text-light' */
 .text-muted { color: var(--text-muted); }
+
+/* Las clases antiguas se mapean a las nuevas: */
+/* .bg-background-dark (usar .bg-background-main) */
+/* .bg-secondary-dark (usar .bg-background-card) */
+/* .border-dark (usar .border-theme) */

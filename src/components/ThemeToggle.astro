@@ -1,62 +1,57 @@
 ---
+// src/components/ThemeToggle.astro
 // No se necesita frontmatter
 ---
 
 <button
-  id="theme-toggle"
-  class="flex size-10 items-center justify-center rounded-full text-light hover:bg-border-theme transition-colors"
+  class="theme-toggle-btn flex size-10 items-center justify-center rounded-full text-light hover:bg-border-theme transition-colors cursor-pointer"
   aria-label="Toggle dark/light theme"
   title="Toggle dark/light theme"
-  client:load
 >
-  <span class="material-symbols-outlined !text-2xl" id="theme-icon">
+  <span class="material-symbols-outlined !text-2xl theme-icon">
     contrast
   </span>
 </button>
 
 <script>
+  // Constantes
   const storageKey = 'theme-preference';
   const classDark = 'dark';
-  const iconId = 'theme-icon';
-  const buttonId = 'theme-toggle';
+  
+  // Selectores de clase (no ID)
+  const btnClass = '.theme-toggle-btn';
+  const iconClass = '.theme-icon';
 
-  /**
-   * Lee el tema actual del <html>
-   * @returns {'light' | 'dark'} 
-   */
   function getThemePreference() {
     return document.documentElement.classList.contains(classDark) ? 'dark' : 'light';
   }
-  
-  /**
-   * Aplica el tema al <html> y actualiza el icono.
-   * @param {'light' | 'dark'} theme 
-   */
+
   function applyTheme(theme) {
     const isDark = theme === 'dark';
+    
+    // 1. Aplicar clase al HTML
     document.documentElement.classList.toggle(classDark, isDark);
     
-    const iconElement = document.getElementById(iconId);
-    if (iconElement) {
-      // Actualiza el icono de Material Symbols
-      iconElement.textContent = isDark ? 'dark_mode' : 'light_mode'; 
-    }
+    // 2. Actualizar TODOS los íconos (escritorio y móvil)
+    const icons = document.querySelectorAll(iconClass);
+    icons.forEach(icon => {
+      icon.textContent = isDark ? 'dark_mode' : 'light_mode';
+    });
   }
 
-  // 1. Inicializar el icono inmediatamente (el tema ya fue inicializado en <head> de Layout.astro)
+  // Inicializar al cargar (busca la preferencia actual)
   applyTheme(getThemePreference());
 
-  // 2. Adjuntar el listener de click.
-  const toggleButton = document.getElementById(buttonId);
-  if (toggleButton) {
-    toggleButton.addEventListener('click', () => {
-      // Determinar el nuevo tema
+  // Agregar el evento click a TODOS los botones de tema encontrados
+  const buttons = document.querySelectorAll(btnClass);
+  
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
       const currentTheme = getThemePreference();
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
-      // Aplicar y guardar
       applyTheme(newTheme);
       localStorage.setItem(storageKey, newTheme);
     });
-  }
+  });
 </script>

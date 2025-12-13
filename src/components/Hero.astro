@@ -4,35 +4,40 @@
     alt="Heavy mining machinery in a large open-pit mine"
     style="background-image: linear-gradient(rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.9) 100%), url('/images/hero-background.png');"
   >
-    
     <div class="flex flex-col gap-4 max-w-3xl">
       <h1
-        class="text-light text-4xl md:text-6xl font-white leading-tight tracking-tighter"
+        class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter"
       >
         Soluciones de Alto Rendimiento para la Minería
       </h1>
 
-      <p class="text-text-muted text-base md:text-lg font-normal leading-normal">
+      <p class="text-gray-300 text-base md:text-lg font-normal leading-normal">
         Neumáticos duraderos y servicios de rencauche expertos para maximizar la
         eficiencia y seguridad de su operación.
       </p>
     </div>
 
-    <div class="flex flex-wrap gap-4 justify-center">
+    <!-- BOTONES -->
+    <div class="relative z-10 flex flex-wrap gap-4 justify-center">
       <a
-        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
         href="#neumaticos"
+        class="flex h-12 px-6 rounded-lg items-center justify-center
+               bg-red-600 text-white font-bold
+               hover:bg-red-700 transition-colors"
       >
-        <span class="truncate">Ver Neumáticos</span>
+        Ver Neumáticos
       </a>
 
       <a
-        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-border-theme text-light text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary transition-colors"
         href="#rencauche"
+        class="flex h-12 px-6 rounded-lg items-center justify-center
+               bg-gray-200 text-gray-900 font-bold
+               hover:bg-gray-300
+               dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700
+               transition-colors"
       >
-        <span class="truncate">Servicio de Rencauche</span>
+        Servicio de Rencauche
       </a>
     </div>
-    
   </div>
 </section>

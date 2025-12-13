@@ -1,12 +1,14 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 ---
+
 <header
   class="sticky top-0 z-50 w-full bg-background-main/80 backdrop-blur-sm border-b border-theme"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
 
+      <!-- LOGO -->
       <div class="flex items-center gap-4 text-light">
         <div class="text-primary size-6">
           <svg
@@ -17,12 +19,13 @@ import ThemeToggle from "./ThemeToggle.astro";
             <path
               d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
               fill="currentColor"
-            ></path>
+            />
           </svg>
         </div>
         <h2 class="text-xl font-bold">Rumbomotriz</h2>
       </div>
 
+      <!-- NAV -->
       <nav class="hidden md:flex items-center gap-8">
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#inicio">Inicio</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#sobre-nosotros">Sobre Nosotros</a>
@@ -31,16 +34,30 @@ import ThemeToggle from "./ThemeToggle.astro";
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#contacto">Contacto</a>
       </nav>
 
+      <!-- ACCIONES -->
       <div class="flex items-center gap-4">
-        <ThemeToggle />
+        <!-- TOGGLE TEMA -->
+        <div
+          class="cursor-pointer flex items-center justify-center
+                 hover:opacity-80 transition-opacity"
+          aria-label="Cambiar tema"
+          title="Cambiar tema"
+        >
+          <ThemeToggle />
+        </div>
 
+        <!-- BOTÓN -->
         <a
-          class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+          class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center
+                 overflow-hidden rounded-lg h-10 px-4
+                 bg-primary text-white text-sm font-bold
+                 hover:bg-primary/90 transition-colors"
           href="#contacto"
         >
           <span class="truncate">Cotizar Ahora</span>
         </a>
       </div>
-      </div>
+
+    </div>
   </div>
 </header>

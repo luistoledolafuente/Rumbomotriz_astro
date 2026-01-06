@@ -64,38 +64,54 @@ import ThemeToggle from "./ThemeToggle.astro";
 </header>
 
 <script>
-  // Scroll Effect
-  const header = document.getElementById('main-header');
-  
-  function updateHeader() {
-    if (window.scrollY > 20) {
-      header?.classList.add('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
-      header?.classList.remove('bg-transparent');
-    } else {
-      header?.classList.remove('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
-      header?.classList.add('bg-transparent');
+  function setupHeader() {
+    const header = document.getElementById('main-header');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const menuLinks = document.querySelectorAll('.mobile-link');
+
+    // Scroll Effect
+    function updateHeader() {
+      if (window.scrollY > 20) {
+        header?.classList.add('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
+        header?.classList.remove('bg-transparent');
+      } else {
+        header?.classList.remove('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
+        header?.classList.add('bg-transparent');
+      }
+    }
+
+    window.addEventListener('scroll', updateHeader);
+    updateHeader(); // Init on load
+
+    // Mobile Menu
+    if (menuBtn && menu) {
+      // Clean up previous listeners if any (though setupHeader runs once per page view usually)
+      // Simpler to just add new ones, as old elements are replaced.
+      
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+      });
+
+      // Close menu when clicking outside or on a link
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target as Node) && !menuBtn.contains(e.target as Node)) {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+        }
+      });
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+        });
+      });
     }
   }
 
-  window.addEventListener('scroll', updateHeader);
-  updateHeader(); // Init
-
-  // Mobile Menu
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const links = document.querySelectorAll('.mobile-link');
-
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('flex');
-    });
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        menu.classList.remove('flex');
-      });
-    });
-  }
+  // Run on view transition navigation (and initial load if ViewTransitions enabled)
+  document.addEventListener('astro:page-load', setupHeader);
 </script>

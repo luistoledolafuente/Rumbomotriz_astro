@@ -35,34 +35,34 @@ const featuredProducts = products.slice(0, 3);
       ))}
     </div>
 
-    <div class="relative rounded-3xl bg-surface border border-border p-8 md:p-12 text-center overflow-hidden group shadow-2xl">
+    <div class="relative rounded-2xl bg-surface border border-border p-8 text-center overflow-hidden group shadow-xl">
       
       <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      <div class="relative z-10 flex flex-col items-center gap-6">
-        <h3 class="text-2xl md:text-3xl font-bold text-foreground">
+      <div class="relative z-10 flex flex-col items-center gap-4">
+        <h3 class="text-xl md:text-2xl font-bold text-foreground">
           ¿Buscas una medida específica?
         </h3>
-        <p class="text-muted text-lg max-w-2xl">
+        <p class="text-muted text-base max-w-2xl">
           Disponemos de un inventario completo. Revisa nuestro catálogo o habla con un ingeniero experto.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
           <a 
             href="/catalogo" 
-            class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-foreground text-background font-black text-lg hover:opacity-90 transition-opacity shadow-xl w-full sm:w-auto"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-foreground text-background font-bold text-base hover:opacity-90 transition-opacity shadow-lg w-full sm:w-auto"
             style="background-color: var(--foreground); color: var(--background);"
           >
-            Explorar Catálogo Completo
+            Explorar Catálogo
           </a>
           
           <a 
             href="https://wa.me/51930599112?text=Hola%20Rumbomotriz%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20sobre%20neum%C3%A1ticos." 
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center px-8 py-4 rounded-xl border-2 border-[#25D366] text-[#25D366] font-bold text-lg hover:bg-[#25D366] hover:text-white transition-colors w-full sm:w-auto bg-transparent gap-3 group"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-[#25D366] text-[#25D366] font-bold text-base hover:bg-[#25D366] hover:text-white transition-colors w-full sm:w-auto bg-transparent gap-2 group"
           >
-            <svg viewBox="0 0 32 32" class="w-6 h-6 fill-current transition-transform group-hover:scale-110" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.742 5.49 2.037 7.788L0 32l8.414-2.188A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.091c-2.495 0-4.936-.67-7.057-1.94l-.505-.297-4.99 1.297 1.33-4.858-.325-.52A13.03 13.03 0 012.91 16C2.91 8.798 8.798 2.91 16 2.91S29.09 8.798 29.09 16 23.202 29.09 16 29.09zm7.457-9.66c-.407-.203-2.406-1.186-2.777-1.32-.37-.136-.64-.203-.91.203-.27.407-1.05 1.32-1.286 1.59-.237.27-.474.304-.88.101-.407-.203-1.717-.634-3.268-2.023-1.206-1.078-2.02-2.41-2.257-2.817-.237-.407-.025-.627.178-.83.182-.182.407-.474.61-.711.203-.237.27-.407.407-.678.136-.27.068-.508-.034-.711-.102-.203-.91-2.202-1.247-3.014-.337-.813-.678-.703-.91-.711h-.779c-.27 0-.711.101-1.084.508-.372.407-1.422 1.389-1.422 3.387s1.456 3.928 1.659 4.198c.203.27 2.86 4.37 6.92 6.126.967.417 1.722.666 2.31.83.973.31 1.86.267 2.56.162.78-.117 2.406-.983 2.746-1.93.34-.948.34-1.76.237-1.93-.101-.17-.372-.27-.779-.474z"/></svg>
+            <svg viewBox="0 0 32 32" class="w-5 h-5 fill-current transition-transform group-hover:scale-110" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.742 5.49 2.037 7.788L0 32l8.414-2.188A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.091c-2.495 0-4.936-.67-7.057-1.94l-.505-.297-4.99 1.297 1.33-4.858-.325-.52A13.03 13.03 0 012.91 16C2.91 8.798 8.798 2.91 16 2.91S29.09 8.798 29.09 16 23.202 29.09 16 29.09zm7.457-9.66c-.407-.203-2.406-1.186-2.777-1.32-.37-.136-.64-.203-.91.203-.27.407-1.05 1.32-1.286 1.59-.237.27-.474.304-.88.101-.407-.203-1.717-.634-3.268-2.023-1.206-1.078-2.02-2.41-2.257-2.817-.237-.407-.025-.627.178-.83.182-.182.407-.474.61-.711.203-.237.27-.407.407-.678.136-.27.068-.508-.034-.711-.102-.203-.91-2.202-1.247-3.014-.337-.813-.678-.703-.91-.711h-.779c-.27 0-.711.101-1.084.508-.372.407-1.422 1.389-1.422 3.387s1.456 3.928 1.659 4.198c.203.27 2.86 4.37 6.92 6.126.967.417 1.722.666 2.31.83.973.31 1.86.267 2.56.162.78-.117 2.406-.983 2.746-1.93.34-.948.34-1.76.237-1.93-.101-.17-.372-.27-.779-.474z"/></svg>
             Cotizar por WhatsApp
           </a>
         </div>

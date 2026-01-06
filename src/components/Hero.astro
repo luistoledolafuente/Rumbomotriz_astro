@@ -1,43 +1,121 @@
+---
+// src/components/Hero.astro
+
+// Configuración de los videos de fondo
+const slides = [
+  { video: "/videos/hero-1.mp4", poster: "/images/hero-background.png" }, // Video 1
+  { video: "/videos/hero-2.mp4", poster: "/images/hero-background.png" }, // Video 2 (puedes repetir si no tienes más)
+];
+---
+
 <section class="w-full py-20" id="inicio">
-  <div
-    class="min-h-[60vh] flex flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 text-center"
-    alt="Heavy mining machinery in a large open-pit mine"
-    style="background-image: linear-gradient(rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.9) 100%), url('/images/hero-background.png');"
-  >
-    <div class="flex flex-col gap-4 max-w-3xl">
-      <h1
-        class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter"
-      >
+  <div class="relative w-full min-h-[60vh] flex flex-col gap-8 items-center justify-center p-8 text-center rounded-xl overflow-hidden shadow-2xl bg-black group">
+    
+    <div class="absolute inset-0 w-full h-full z-0">
+      {slides.map((slide, index) => (
+        <div class={`video-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <div class="absolute inset-0 bg-black/60 z-10"></div> <video
+            autoplay
+            muted
+            loop
+            playsinline
+            class="w-full h-full object-cover"
+            poster={slide.poster}
+          >
+            <source src={slide.video} type="video/mp4" />
+          </video>
+        </div>
+      ))}
+    </div>
+
+    <div class="relative z-20 flex flex-col gap-4 max-w-3xl animate-fade-in">
+      <h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter drop-shadow-lg">
         Soluciones de Alto Rendimiento para la Minería
       </h1>
 
-      <p class="text-gray-300 text-base md:text-lg font-normal leading-normal">
+      <p class="text-gray-200 text-base md:text-lg font-normal leading-normal drop-shadow-md">
         Neumáticos duraderos y servicios de rencauche expertos para maximizar la
         eficiencia y seguridad de su operación.
       </p>
     </div>
 
-    <!-- BOTONES -->
-    <div class="relative z-10 flex flex-wrap gap-4 justify-center">
+    <div class="relative z-20 flex flex-wrap gap-4 justify-center animate-fade-in animation-delay-200">
       <a
-        href="#neumaticos"
+        href="/catalogo"
         class="flex h-12 px-6 rounded-lg items-center justify-center
-               bg-red-600 text-white font-bold
-               hover:bg-red-700 transition-colors"
+               bg-primary text-white font-bold
+               hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
       >
         Ver Neumáticos
       </a>
 
       <a
-        href="#rencauche"
+        href="/#rencauche"
         class="flex h-12 px-6 rounded-lg items-center justify-center
-               bg-gray-200 text-gray-900 font-bold
-               hover:bg-gray-300
-               dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700
-               transition-colors"
+               bg-white text-gray-900 font-bold
+               hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
       >
         Servicio de Rencauche
       </a>
     </div>
+
+    <div class="absolute bottom-6 z-30 flex gap-2">
+      {slides.map((_, index) => (
+        <div class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></div>
+      ))}
+    </div>
+
   </div>
 </section>
+
+<script>
+  // Script simple para rotar los videos cada 6 segundos
+  const slides = document.querySelectorAll('.video-slide');
+  const indicators = document.querySelectorAll('.indicator');
+  let currentSlide = 0;
+
+  function nextSlide() {
+    // Ocultar actual
+    slides[currentSlide].classList.remove('opacity-100');
+    slides[currentSlide].classList.add('opacity-0');
+    if(indicators[currentSlide]) {
+        indicators[currentSlide].classList.remove('bg-white', 'w-4');
+        indicators[currentSlide].classList.add('bg-white/50');
+    }
+
+    // Calcular siguiente
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // Mostrar siguiente
+    slides[currentSlide].classList.remove('opacity-0');
+    slides[currentSlide].classList.add('opacity-100');
+    if(indicators[currentSlide]) {
+        indicators[currentSlide].classList.remove('bg-white/50');
+        indicators[currentSlide].classList.add('bg-white', 'w-4');
+    }
+  }
+
+  // Iniciar solo si hay más de 1 video
+  if (slides.length > 1) {
+    // Activar primer indicador
+    if(indicators[0]) indicators[0].classList.add('bg-white', 'w-4');
+    setInterval(nextSlide, 6000); // Cambia cada 6 segundos
+  }
+</script>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

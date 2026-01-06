@@ -3,26 +3,29 @@
 const formAction = "https://formspree.io/f/xanrveyk"; 
 ---
 <section class="w-full py-20" id="contacto">
-  <div class="bg-background-card rounded-xl p-8 md:p-12 border border-theme"> 
+  <div class="bg-surface rounded-xl p-8 md:p-12 border border-border"> 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       
       <div class="flex flex-col gap-6">
-        <h2 class="text-light text-3xl md:text-4xl font-black leading-tight tracking-tighter">Contáctenos</h2>
-        <p class="text-text-muted text-base font-normal leading-normal">
+        <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight tracking-tighter">Contáctenos</h2>
+        <p class="text-muted text-base font-normal leading-normal">
           ¿Listo para optimizar su operación? Complete el formulario para recibir una cotización personalizada.
         </p>
         <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-4">
-            <span class="material-symbols-outlined text-primary">location_on</span>
-            <p class="text-light">Av. Industrial 123, Parque Minero, Calama, Chile</p>
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+            <div class="flex flex-col">
+              <p class="text-foreground font-semibold">Rumbomotriz S.A.C.</p>
+              <p class="text-muted text-sm">Av. Gral. Andrés de Santa Cruz 270, Jesús María, Lima</p>
+            </div>
           </div>
           <div class="flex items-center gap-4">
             <span class="material-symbols-outlined text-primary">phone</span>
-            <p class="text-light">+56 9 1234 5678</p>
+            <a href="https://wa.me/51930599112" target="_blank" class="text-foreground hover:text-primary transition-colors">+51 930 599 112</a>
           </div>
           <div class="flex items-center gap-4">
             <span class="material-symbols-outlined text-primary">mail</span>
-            <p class="text-light">ventas@rumbomotriz.cl</p>
+            <a href="mailto:ventas@rumbomotriz.cl" class="text-foreground hover:text-primary transition-colors">ventas@rumbomotriz.cl</a>
           </div>
         </div>
       </div>
@@ -40,7 +43,7 @@ const formAction = "https://formspree.io/f/xanrveyk";
             id="name"
             name="name" 
             required
-            class="w-full h-12 px-4 bg-background-main border border-theme rounded-lg text-light focus:ring-2 focus:ring-primary outline-none" 
+            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
             placeholder="Nombre Completo" 
             type="text"
           />
@@ -50,7 +53,7 @@ const formAction = "https://formspree.io/f/xanrveyk";
             id="email"
             name="email"
             required
-            class="w-full h-12 px-4 bg-background-main border border-theme rounded-lg text-light focus:ring-2 focus:ring-primary outline-none" 
+            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
             placeholder="Email" 
             type="email"
           />
@@ -59,7 +62,7 @@ const formAction = "https://formspree.io/f/xanrveyk";
           <input 
             id="phone"
             name="phone"
-            class="w-full h-12 px-4 bg-background-main border border-theme rounded-lg text-light focus:ring-2 focus:ring-primary outline-none" 
+            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
             placeholder="Teléfono" 
             type="tel"
           />
@@ -69,7 +72,7 @@ const formAction = "https://formspree.io/f/xanrveyk";
             id="message"
             name="message"
             required
-            class="w-full p-4 bg-background-main border border-theme rounded-lg text-light focus:ring-2 focus:ring-primary outline-none" 
+            class="w-full p-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
             placeholder="Mensaje" 
             rows="4"
           ></textarea>
@@ -96,6 +99,17 @@ const formAction = "https://formspree.io/f/xanrveyk";
   const btn = document.getElementById('submit-btn');
 
   if (form) {
+    // 1. Auto-llenado desde URL (si vienes de un producto)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productRequest = urlParams.get('producto');
+    const messageField = document.getElementById('message');
+    
+    if (productRequest && messageField) {
+      messageField.value = `Hola, estoy interesado en cotizar el producto: ${productRequest}. \n\nMe gustaría saber...`;
+      // Limpiar URL para que no se vea feo (opcional)
+      // window.history.replaceState({}, document.title, "/#contacto");
+    }
+
     form.addEventListener('submit', async function(e) {
       e.preventDefault(); // Evita la recarga de página
       

@@ -2,44 +2,57 @@
 // No se necesita JS
 ---
 <section class="w-full py-20" id="rencauche">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    
-    <div class="order-2 md:order-1">
-      <img 
-        class="w-full h-auto object-cover rounded-xl aspect-video" 
-        alt="Technician inspecting the tread of a large tire in a workshop" 
-        src="/images/retread.png"
-        width="1920"
-        height="1080"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="flex flex-col gap-4 order-1 md:order-2">
-      <h2 
-        class="text-light text-3xl md:text-4xl font-black leading-tight tracking-tighter"
-      >
-        Servicio de Rencauche Experto
-      </h2>
-      <p class="text-text-muted text-base font-normal leading-normal">
-        Nuestro proceso de rencauche de última generación extiende la vida útil de sus neumáticos, ofreciendo un rendimiento comparable al de uno nuevo a una fracción del costo. Reduzca sus gastos operativos y contribuya a la sostenibilidad ambiental con una solución económica y confiable.
-      </p>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
       
-      <div class="flex flex-col gap-3 mt-4">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary">savings</span>
-          <span class="text-light">Ahorro significativo de costos</span>
+      <!-- Image Column -->
+      <div class="order-2 md:order-1">
+        <img 
+          class="w-full h-auto object-cover rounded-xl aspect-square shadow-xl" 
+          alt="Technician inspecting the tread of a large tire in a workshop" 
+          src="/images/retread.png"
+          width="1000"
+          height="1000"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Content Column -->
+      <div class="flex flex-col gap-8 order-1 md:order-2">
+        <div>
+          <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Servicios Expertos</span>
+          <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight mb-6">
+            Segunda Vida para <br /> Tus Neumáticos
+          </h2>
+          <div class="h-1.5 w-20 bg-primary rounded-full"></div>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary">eco</span>
-          <span class="text-light">Menor impacto ambiental</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary">verified_user</span>
-          <span class="text-light">Calidad y seguridad garantizadas</span>
+
+        <p class="text-muted text-lg leading-relaxed">
+          Nuestro proceso de rencauche certificado extiende la vida útil de sus equipos, ofreciendo un rendimiento comparable al de un neumático nuevo, pero a una fracción del costo.
+        </p>
+        
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4 p-4 rounded-lg bg-surface border border-border">
+            <div class="bg-primary/10 p-2 rounded-full text-primary">
+              <span class="material-symbols-outlined">savings</span>
+            </div>
+            <span class="text-foreground font-semibold">Ahorro de hasta 40% en costos</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-lg bg-surface border border-border">
+            <div class="bg-primary/10 p-2 rounded-full text-primary">
+              <span class="material-symbols-outlined">eco</span>
+            </div>
+            <span class="text-foreground font-semibold">Menor impacto ambiental</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-lg bg-surface border border-border">
+            <div class="bg-primary/10 p-2 rounded-full text-primary">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <span class="text-foreground font-semibold">Garantía total de operación</span>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>

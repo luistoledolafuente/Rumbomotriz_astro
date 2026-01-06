@@ -1,25 +1,78 @@
-<footer class="w-full border-t border-theme mt-20">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<footer class="w-full bg-neutral-950 text-white pt-16 pb-8 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       
-      <div class="flex items-center gap-4 text-light">
-        <div class="text-primary size-6">
-          <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
-          </svg>
+      <!-- Brand -->
+      <div class="flex flex-col gap-6">
+        <div class="flex items-center gap-3">
+          <div class="text-primary size-8">
+            <span class="material-symbols-outlined !text-4xl">tire_repair</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tighter leading-none">RUMBO</span>
+            <span class="text-sm font-bold tracking-widest text-neutral-400 leading-none">MOTRIZ</span>
+          </div>
         </div>
-        <h2 class="text-xl font-bold">Rumbomotriz</h2>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Expertos en neumáticos mineros y servicios de rencauche industrial. Maximizamos la continuidad de su operación.
+        </p>
       </div>
 
-      <nav class="flex flex-wrap justify-center gap-6 text-sm font-medium">
-        <a class="text-text-muted hover:text-primary transition-colors" href="#inicio">Inicio</a>
-        <a class="text-text-muted hover:text-primary transition-colors" href="#sobre-nosotros">Sobre Nosotros</a>
-        <a class="text-text-muted hover:text-primary transition-colors" href="#neumaticos">Neumáticos</a>
-        <a class="text-text-muted hover:text-primary transition-colors" href="#rencauche">Rencauche</a>
-        <a class="text-text-muted hover:text-primary transition-colors" href="#contacto">Contacto</a>
-      </nav>
+      <!-- Quick Links -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-bold uppercase tracking-wider text-primary">Navegación</h3>
+        <nav class="flex flex-col gap-2">
+          <a href="/#inicio" class="text-neutral-400 hover:text-white transition-colors">Inicio</a>
+          <a href="/#sobre-nosotros" class="text-neutral-400 hover:text-white transition-colors">Sobre Nosotros</a>
+          <a href="/catalogo" class="text-neutral-400 hover:text-white transition-colors">Catálogo</a>
+          <a href="/#rencauche" class="text-neutral-400 hover:text-white transition-colors">Rencauche</a>
+          <a href="/#contacto" class="text-neutral-400 hover:text-white transition-colors">Contacto</a>
+        </nav>
+      </div>
 
-      <p class="text-sm text-text-muted">© 2024 Rumbomotriz. Todos los derechos reservados.</p>
+      <!-- Contact -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-bold uppercase tracking-wider text-primary">Contacto</h3>
+        <div class="flex flex-col gap-3">
+          <a href="https://wa.me/51930599112" target="_blank" class="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors group">
+            <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">call</span>
+            <span>+51 930 599 112</span>
+          </a>
+          <a href="mailto:ventas@rumbomotriz.cl" class="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors group">
+            <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">mail</span>
+            <span>ventas@rumbomotriz.cl</span>
+          </a>
+          <div class="flex items-start gap-3 text-neutral-400">
+            <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+            <span>Av. Gral. Andrés de Santa Cruz 270,<br/>Jesus María, Lima</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule / Social -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-lg font-bold uppercase tracking-wider text-primary">Horario</h3>
+        <p class="text-neutral-400 text-sm">
+          Lunes a Viernes:<br/>
+          8:00 AM - 6:00 PM
+        </p>
+        <p class="text-neutral-400 text-sm">
+          Sábados:<br/>
+          8:00 AM - 1:00 PM
+        </p>
+      </div>
+
     </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+      <p>© 2024 Rumbomotriz. Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+        <a href="#" class="hover:text-white transition-colors">Términos</a>
+      </div>
+    </div>
+
   </div>
 </footer>

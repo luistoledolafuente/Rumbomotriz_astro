@@ -4,7 +4,7 @@
 ---
 
 <button
-  class="theme-toggle-btn flex size-10 items-center justify-center rounded-full text-light hover:bg-border-theme transition-colors cursor-pointer"
+  class="theme-toggle-btn flex size-10 items-center justify-center rounded-full text-foreground hover:bg-muted/10 transition-colors cursor-pointer"
   aria-label="Toggle dark/light theme"
   title="Toggle dark/light theme"
 >
@@ -14,44 +14,45 @@
 </button>
 
 <script>
-  // Constantes
-  const storageKey = 'theme-preference';
-  const classDark = 'dark';
-  
-  // Selectores de clase (no ID)
-  const btnClass = '.theme-toggle-btn';
-  const iconClass = '.theme-icon';
+  // Script habilitado para View Transitions
+  function initThemeToggle() {
+    const storageKey = 'theme-preference';
+    const classDark = 'dark';
+    const btnClass = '.theme-toggle-btn';
+    const iconClass = '.theme-icon';
 
-  function getThemePreference() {
-    return document.documentElement.classList.contains(classDark) ? 'dark' : 'light';
-  }
+    function getThemePreference() {
+      return document.documentElement.classList.contains(classDark) ? 'dark' : 'light';
+    }
 
-  function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    
-    // 1. Aplicar clase al HTML
-    document.documentElement.classList.toggle(classDark, isDark);
-    
-    // 2. Actualizar TODOS los íconos (escritorio y móvil)
-    const icons = document.querySelectorAll(iconClass);
-    icons.forEach(icon => {
-      icon.textContent = isDark ? 'dark_mode' : 'light_mode';
-    });
-  }
-
-  // Inicializar al cargar (busca la preferencia actual)
-  applyTheme(getThemePreference());
-
-  // Agregar el evento click a TODOS los botones de tema encontrados
-  const buttons = document.querySelectorAll(btnClass);
-  
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentTheme = getThemePreference();
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      document.documentElement.classList.toggle(classDark, isDark);
       
-      applyTheme(newTheme);
-      localStorage.setItem(storageKey, newTheme);
+      const icons = document.querySelectorAll(iconClass);
+      icons.forEach(icon => {
+        icon.textContent = isDark ? 'dark_mode' : 'light_mode';
+      });
+    }
+
+    // Actualizar UI inicial
+    applyTheme(getThemePreference());
+
+    const buttons = document.querySelectorAll(btnClass);
+    buttons.forEach(btn => {
+      // Remover listeners previos si existen para evitar duplicados (opcional pero seguro)
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+      
+      newBtn.addEventListener('click', () => {
+        const currentTheme = getThemePreference();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem(storageKey, newTheme);
+      });
     });
-  });
+  }
+
+  // Ejecutar en cada navegación
+  document.addEventListener('astro:page-load', initThemeToggle);
 </script>

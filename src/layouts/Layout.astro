@@ -1,58 +1,87 @@
 ---
 // 1. Importamos los estilos globales que ya creamos
 import '../styles/global.css';
-import "../styles/custom.css";
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { ClientRouter } from 'astro:transitions';
+
 export interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
 }
-const { title } = Astro.props;
+
+const { 
+  title, 
+  description = "Rumbomotriz: Soluciones Integrales en Neumáticos y Rencauche para la Minería y Transporte en Perú.",
+  image = "/images/hero-background.png", 
+  canonical = Astro.url.href 
+} = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es" class="scroll-smooth"> 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.url)} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonical} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+  
+  <!-- View Transitions -->
+  <ClientRouter />
+
+  <!-- Theme Script -->
   <script is:inline>
   (function () {
     const storageKey = 'theme-preference';
     const classDark = 'dark';
 
     function getThemePreference() {
-      // 1. Intentar obtener del localStorage
-      const stored = localStorage.getItem(storageKey);
-      if (stored === 'light' || stored === 'dark') {
-        return stored;
+      if (typeof localStorage !== 'undefined') {
+        const stored = localStorage.getItem(storageKey);
+        if (stored === 'light' || stored === 'dark') return stored;
       }
-      
-      // 2. Si no hay, usar la preferencia del sistema
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      
-      // 3. Por defecto, 'light'
-      return 'light';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    const currentTheme = getThemePreference();
-    if (currentTheme === 'dark') {
-        document.documentElement.classList.add(classDark);
-    } else {
-        document.documentElement.classList.remove(classDark);
+    function setClass() {
+      const currentTheme = getThemePreference();
+      if (currentTheme === 'dark') {
+          document.documentElement.classList.add(classDark);
+      } else {
+          document.documentElement.classList.remove(classDark);
+      }
     }
+
+    setClass();
+    document.addEventListener('astro:after-swap', setClass);
   })();
   </script>
   
-  <title>{title}</title>
-
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body class="bg-background-main text-light font-display">
+<body class="bg-background text-foreground font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
   <slot />
   <WhatsAppButton />
 </body>

@@ -1,43 +1,49 @@
 ---
 export interface Props {
+  id: string;
   title: string;
   description: string;
   imgSrc: string;
   imgAlt: string;
 }
 
-const { title, description, imgSrc, imgAlt } = Astro.props;
+const { id, title, description, imgSrc, imgAlt } = Astro.props;
 ---
 
-<div
-  class="flex flex-col rounded-xl border border-theme bg-background-card overflow-hidden group"
->
-  <div
-    class="aspect-square bg-background-main flex items-center justify-center p-4"
-  >
+<article class="group relative flex flex-col h-full bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border border-border hover:border-primary/50 hover:-translate-y-2">
+  
+  <div class="relative w-full aspect-[4/3] bg-background/50 p-8 flex items-center justify-center overflow-hidden border-b border-border/50">
+    
+    <div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-0 group-hover:scale-125 transition-transform duration-500"></div>
+    
     <img
-      class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+      class="relative z-10 w-full h-full object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2"
       src={imgSrc}
       alt={imgAlt}
       loading="lazy"
-      width="400"
-      height="400"
     />
   </div>
 
-  <div class="p-6 flex flex-col gap-4 flex-grow">
-    <h3 class="text-light text-xl font-bold">{title}</h3>
-    <p class="text-text-muted text-sm flex-grow">{description}</p>
+  <div class="flex flex-col flex-grow p-6 sm:p-8">
+    <div class="mb-4">
+      <h3 class="text-2xl font-black text-foreground group-hover:text-primary transition-colors mb-2 leading-tight">
+        {title}
+      </h3>
+      
+      <div class="h-1 w-12 bg-primary rounded-full mb-4"></div>
+      
+      <p class="text-muted text-base leading-relaxed line-clamp-3">
+        {description}
+      </p>
+    </div>
 
-    <a
-      href="#contacto"
-      class="flex mt-2 min-w-[84px] cursor-pointer items-center justify-center
-         rounded-lg h-10 px-4
-         bg-gray-700 text-white
-         text-sm font-bold leading-normal
-         hover:bg-gray-600 transition-colors"
-    >
-      <span class="truncate">Solicitar Información</span>
-    </a>
+    <div class="mt-auto pt-4">
+      <a
+        href={`/catalogo/${id}`}
+        class="flex items-center justify-center w-full py-3 px-4 rounded-xl bg-primary text-white font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 hover:shadow-primary/40 transition-all duration-300"
+      >
+        Ver Ficha Técnica
+      </a>
+    </div>
   </div>
-</div>
+</article>

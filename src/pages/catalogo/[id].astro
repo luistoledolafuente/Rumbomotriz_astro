@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { products } from '../../data/products';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export async function getStaticPaths() {
+  return products.map(product => ({
+    params: { id: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout 
+  title={`${product.title} | Rumbomotriz`} 
+  description={product.description || `Detalles técnicos y especificaciones de ${product.title}`}
+  image={product.imgSrc}
+>
+  <div class="flex flex-col min-h-screen">
+    <Header />
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Catálogo', href: '/catalogo' }, { label: product.title }]} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
+        <div class="bg-surface rounded-2xl p-8 border border-border flex items-center justify-center">
+          <img src={product.imgSrc} alt={product.imgAlt} class="w-full max-h-[400px] object-contain drop-shadow-xl" transition:name={`image-${product.id}`} />
+        </div>
+        <div class="flex flex-col gap-6">
+          <h1 class="text-4xl font-black text-foreground" transition:name={`title-${product.id}`}>{product.title}</h1>
+          <p class="text-lg text-muted">{product.fullDescription}</p>
+          <ul class="space-y-2 mt-4">
+            {product.specs.map(spec => (
+              <li class="text-muted flex items-center gap-2">
+                <span class="w-2 h-2 bg-primary rounded-full"></span> {spec}
+              </li>
+            ))}
+          </ul>
+          <a 
+            href={`https://wa.me/51930599112?text=${encodeURIComponent(`Hola Rumbomotriz, estoy interesado en cotizar el producto: ${product.title}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 border-2 border-[#25D366] text-[#25D366] text-center py-3 rounded-xl font-bold hover:bg-[#25D366] hover:text-white transition-colors shadow-lg flex items-center justify-center gap-3 w-full group"
+          >
+            <svg viewBox="0 0 32 32" class="w-6 h-6 fill-current transition-transform group-hover:scale-110" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.742 5.49 2.037 7.788L0 32l8.414-2.188A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.091c-2.495 0-4.936-.67-7.057-1.94l-.505-.297-4.99 1.297 1.33-4.858-.325-.52A13.03 13.03 0 012.91 16C2.91 8.798 8.798 2.91 16 2.91S29.09 8.798 29.09 16 23.202 29.09 16 29.09zm7.457-9.66c-.407-.203-2.406-1.186-2.777-1.32-.37-.136-.64-.203-.91.203-.27.407-1.05 1.32-1.286 1.59-.237.27-.474.304-.88.101-.407-.203-1.717-.634-3.268-2.023-1.206-1.078-2.02-2.41-2.257-2.817-.237-.407-.025-.627.178-.83.182-.182.407-.474.61-.711.203-.237.27-.407.407-.678.136-.27.068-.508-.034-.711-.102-.203-.91-2.202-1.247-3.014-.337-.813-.678-.703-.91-.711h-.779c-.27 0-.711.101-1.084.508-.372.407-1.422 1.389-1.422 3.387s1.456 3.928 1.659 4.198c.203.27 2.86 4.37 6.92 6.126.967.417 1.722.666 2.31.83.973.31 1.86.267 2.56.162.78-.117 2.406-.983 2.746-1.93.34-.948.34-1.76.237-1.93-.101-.17-.372-.27-.779-.474z"/></svg>
+            Cotizar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</Layout>

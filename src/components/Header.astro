@@ -1,60 +1,86 @@
 ---
-// src/components/Header.astro
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="sticky top-0 z-50 w-full bg-background-main/95 backdrop-blur-sm border-b border-theme transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+<header 
+  id="main-header"
+  class="fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-transparent"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
 
-      <div class="flex items-center gap-4 text-light">
-        <div class="text-primary size-6">
-          <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"/>
-          </svg>
+      <a href="/#" class="flex items-center gap-3 group">
+        <div class="text-primary transition-transform duration-300 group-hover:scale-110">
+          <span class="material-symbols-outlined !text-4xl">tire_repair</span>
         </div>
-        <h2 class="text-xl font-bold">Rumbomotriz</h2>
-      </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-black tracking-tighter text-foreground leading-none">RUMBO</span>
+          <span class="text-sm font-bold tracking-widest text-muted leading-none">MOTRIZ</span>
+        </div>
+      </a>
 
       <nav class="hidden md:flex items-center gap-8">
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#inicio">Inicio</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#sobre-nosotros">Sobre Nosotros</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#neumaticos">Neumáticos</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#rencauche">Rencauche</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#contacto">Contacto</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#inicio">Inicio</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#sobre-nosotros">Sobre Nosotros</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/catalogo">Neumáticos</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#rencauche">Rencauche</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#contacto">Contacto</a>
       </nav>
 
       <div class="hidden md:flex items-center gap-4">
         <div class="cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity">
           <ThemeToggle />
         </div>
-        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors" href="#contacto">
+        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors" href="/#contacto">
           <span class="truncate">Cotizar Ahora</span>
         </a>
       </div>
 
       <div class="flex md:hidden items-center gap-4">
-        <ThemeToggle /> <button id="mobile-menu-btn" class="text-light focus:outline-none">
-          <span class="material-symbols-outlined text-3xl">menu</span>
+        <ThemeToggle /> 
+        <button id="mobile-menu-btn" class="text-foreground focus:outline-none p-2" aria-label="Menu">
+          <span class="material-symbols-outlined !text-3xl">menu</span>
         </button>
       </div>
 
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-background-card border-b border-theme shadow-lg flex-col p-4 gap-4">
-    <nav class="flex flex-col gap-4 text-center">
-      <a class="mobile-link text-lg font-medium hover:text-primary" href="#inicio">Inicio</a>
-      <a class="mobile-link text-lg font-medium hover:text-primary" href="#sobre-nosotros">Sobre Nosotros</a>
-      <a class="mobile-link text-lg font-medium hover:text-primary" href="#neumaticos">Neumáticos</a>
-      <a class="mobile-link text-lg font-medium hover:text-primary" href="#rencauche">Rencauche</a>
-      <a class="mobile-link text-lg font-medium hover:text-primary" href="#contacto">Contacto</a>
+  <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border shadow-lg flex-col p-6 gap-6 transition-all duration-300">
+    <nav class="flex flex-col gap-6 text-center">
+      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#inicio">Inicio</a>
+      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#sobre-nosotros">Sobre Nosotros</a>
+      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/catalogo">Neumáticos</a>
+      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#rencauche">Rencauche</a>
+      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#contacto">Contacto</a>
     </nav>
+    <a 
+      href="/#contacto"
+      class="w-full bg-primary text-white py-3 rounded-lg font-bold text-center text-lg shadow-md hover:bg-primary/90 transition-colors"
+    >
+      Cotizar Ahora
+    </a>
   </div>
 </header>
 
 <script>
-  // Script para manejar el menú móvil
+  // Scroll Effect
+  const header = document.getElementById('main-header');
+  
+  function updateHeader() {
+    if (window.scrollY > 20) {
+      header?.classList.remove('bg-transparent');
+      header?.classList.add('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+    } else {
+      header?.classList.add('bg-transparent');
+      header?.classList.remove('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader);
+  updateHeader(); // Init
+
+  // Mobile Menu
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const links = document.querySelectorAll('.mobile-link');
@@ -65,7 +91,6 @@ import ThemeToggle from "./ThemeToggle.astro";
       menu.classList.toggle('flex');
     });
 
-    // Cerrar menú al hacer click en un enlace
     links.forEach(link => {
       link.addEventListener('click', () => {
         menu.classList.add('hidden');

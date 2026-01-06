@@ -1,7 +1,40 @@
-/* src/styles/global.css */
 @import "tailwindcss";
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Inter", sans-serif;
+
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+}
+
+/* Base Variables */
+:root {
+  --primary: #d10000;
+
+  /* Light Mode */
+  --background: #f8f5f5;
+  --surface: #ffffff;
+  --border: #cccccc;
+  --foreground: #121212;
+  --muted: #666666; /* Improved contrast for accessibility */
+}
+
+/* Dark Mode */
+.dark {
+  --background: #121212;
+  --surface: #1a1a1a;
+  --border: #4a4a4a;
+  --foreground: #f0f0f0;
+  --muted: #a0a0a0;
+}
+
+/* Resets & Base Styles */
 *,
 *::before,
 *::after {
@@ -9,13 +42,14 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  /* CAMBIO: Padding pequeño en móvil, grande en escritorio */
+  @apply bg-background text-foreground font-display antialiased;
+
+  /* Responsive Padding System per original design */
   padding-left: 1rem;
   padding-right: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Solo aplicar el margen grande en pantallas medianas hacia arriba */
 @media (min-width: 768px) {
   body {
     padding-left: 5rem;

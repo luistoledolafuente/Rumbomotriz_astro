@@ -74,7 +74,6 @@ const {
     }
 
     setClass();
-    document.addEventListener('astro:after-swap', setClass);
   })();
   </script>
   
@@ -89,16 +88,14 @@ const {
 </body>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </html>

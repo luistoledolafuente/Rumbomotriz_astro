@@ -1,0 +1,94 @@
+---
+import Icon from "./Icon.astro";
+
+const services = [
+  {
+    icon: "tire",
+    image: "/images/service-tires.jpg",
+    title: "Neumáticos OTR Mineros",
+    description: "Importación y distribución de neumáticos de alto tonelaje para minería a cielo abierto y subterránea.",
+    features: ["Resistencia a cortes y abrasión", "Compuestos de caucho reforzado", "Disponibilidad inmediata"],
+    cta: "Cotizar Neumáticos"
+  },
+  {
+    icon: "renew",
+    image: "/images/service-retread.jpg",
+    title: "Rencauche Industrial",
+    description: "Proceso certificado que extiende la vida útil del neumático hasta en un 40% con rendimiento comparable al original.",
+    features: ["Ahorro de hasta 40%", "Garantía total de operación", "Economía circular"],
+    cta: "Consultar Servicio"
+  },
+  {
+    icon: "gear",
+    image: "/images/service-engineering.jpg",
+    title: "Ingeniería y Asesoría",
+    description: "Diagnóstico técnico en campo para optimizar la selección y mantenimiento de sus neumáticos.",
+    features: ["Inspección y análisis de desgaste", "Selección por aplicación", "Soporte 24/7"],
+    cta: "Hablar con un Ingeniero"
+  }
+];
+---
+
+<section class="w-full py-20 overflow-hidden" id="servicios" aria-label="Servicios">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16 text-center md:text-left">
+      <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Líneas de Servicio</span>
+      <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight mb-6">
+        Soluciones Integrales para <span class="text-primary">Minería</span>
+      </h2>
+      <div class="h-1.5 w-24 bg-primary rounded-full mb-6 md:mx-0 mx-auto"></div>
+      <p class="text-muted text-lg max-w-2xl md:mx-0 mx-auto">
+        Cubrimos cada etapa crítica de su operación con estándares internacionales.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service, i) => (
+        <div class={`reveal reveal-delay-${i + 1} group relative flex flex-col bg-surface rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2`}>
+          
+          <div class="relative h-48 overflow-hidden bg-background">
+            <img
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src={service.image}
+              alt={service.title}
+              width="600"
+              height="400"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 inline-flex size-12 items-center justify-center rounded-xl bg-primary/90 text-white shadow-lg">
+              <Icon name={service.icon} size={24} />
+            </div>
+          </div>
+
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-black text-foreground mb-2">{service.title}</h3>
+            <p class="text-muted text-sm leading-relaxed mb-4">{service.description}</p>
+
+            <ul class="space-y-2 mb-6 flex-grow">
+              {service.features.map(feature => (
+                <li class="flex items-center gap-2 text-sm text-foreground">
+                  <span class="size-1.5 rounded-full bg-primary shrink-0"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={`https://wa.me/51930599112?text=${encodeURIComponent(`Hola Rumbomotriz, quiero información sobre: ${service.title}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group/btn inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary-dark transition-all shadow-lg"
+            >
+              {service.cta}
+              <Icon name="arrow-right" size={18} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

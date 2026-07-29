@@ -1,91 +1,117 @@
 ---
-// src/components/Contact.astro
-const formAction = "https://formspree.io/f/xanrveyk"; 
+import Icon from "./Icon.astro";
+const formAction = "https://formspree.io/f/xanrveyk";
 ---
-<section class="w-full py-20" id="contacto">
-  <div class="bg-surface rounded-xl p-8 md:p-12 border border-border"> 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+<section class="w-full py-20 section-gradient" id="contacto" aria-label="Contacto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-12 text-center">
+      <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Contacto</span>
+      <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight mb-6">
+        Solicite su <span class="text-primary">Cotización</span>
+      </h2>
+      <div class="h-1.5 w-20 bg-primary rounded-full mb-6 mx-auto"></div>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        Un ingeniero especializado lo atenderá en menos de 24 horas.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
       
-      <div class="flex flex-col gap-6">
-        <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight tracking-tighter">Contáctenos</h2>
-        <p class="text-muted text-base font-normal leading-normal">
-          ¿Listo para optimizar su operación? Complete el formulario para recibir una cotización personalizada.
-        </p>
-        <div class="flex flex-col gap-4">
-          <div class="flex items-start gap-4">
-            <span class="material-symbols-outlined text-primary mt-1">location_on</span>
-            <div class="flex flex-col">
-              <p class="text-foreground font-semibold">Rumbomotriz S.A.C.</p>
-              <p class="text-muted text-sm">Av. Gral. Andrés de Santa Cruz 270, Jesús María, Lima</p>
-            </div>
+      <div class="reveal lg:col-span-2 flex flex-col gap-4">
+        <a href="https://wa.me/51930599112" target="_blank" class="flex items-center gap-4 p-5 rounded-xl bg-surface border border-border text-foreground hover:text-primary hover:border-primary/50 transition-all group">
+          <div class="size-12 rounded-xl bg-[#25D366]/10 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 32 32" class="w-6 h-6 fill-[#25D366]"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.742 5.49 2.037 7.788L0 32l8.414-2.188A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.091c-2.495 0-4.936-.67-7.057-1.94l-.505-.297-4.99 1.297 1.33-4.858-.325-.52A13.03 13.03 0 012.91 16C2.91 8.798 8.798 2.91 16 2.91S29.09 8.798 29.09 16 23.202 29.09 16 29.09zm7.457-9.66c-.407-.203-2.406-1.186-2.777-1.32-.37-.136-.64-.203-.91.203-.27.407-1.05 1.32-1.286 1.59-.237.27-.474.304-.88.101-.407-.203-1.717-.634-3.268-2.023-1.206-1.078-2.02-2.41-2.257-2.817-.237-.407-.025-.627.178-.83.182-.182.407-.474.61-.711.203-.237.27-.407.407-.678.136-.27.068-.508-.034-.711-.102-.203-.91-2.202-1.247-3.014-.337-.813-.678-.703-.91-.711h-.779c-.27 0-.711.101-1.084.508-.372.407-1.422 1.389-1.422 3.387s1.456 3.928 1.659 4.198c.203.27 2.86 4.37 6.92 6.126.967.417 1.722.666 2.31.83.973.31 1.86.267 2.56.162.78-.117 2.406-.983 2.746-1.93.34-.948.34-1.76.237-1.93-.101-.17-.372-.27-.779-.474z"/></svg>
           </div>
-          <div class="flex items-center gap-4">
-            <span class="material-symbols-outlined text-primary">phone</span>
-            <a href="https://wa.me/51930599112" target="_blank" class="text-foreground hover:text-primary transition-colors">+51 930 599 112</a>
+          <div>
+            <p class="font-bold text-sm">WhatsApp</p>
+            <p class="text-muted text-xs">+51 930 599 112</p>
           </div>
-          <div class="flex items-center gap-4">
-            <span class="material-symbols-outlined text-primary">mail</span>
-            <a href="mailto:ventas@rumbomotriz.cl" class="text-foreground hover:text-primary transition-colors">ventas@rumbomotriz.cl</a>
+        </a>
+        <a href="mailto:ventas@rumbomotriz.cl" class="flex items-center gap-4 p-5 rounded-xl bg-surface border border-border text-foreground hover:text-primary hover:border-primary/50 transition-all group">
+          <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Icon name="mail" size={24} className="text-primary" />
+          </div>
+          <div>
+            <p class="font-bold text-sm">Email</p>
+            <p class="text-muted text-xs">ventas@rumbomotriz.cl</p>
+          </div>
+        </a>
+        <div class="flex items-start gap-4 p-5 rounded-xl bg-surface border border-border">
+          <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Icon name="pin" size={24} className="text-primary" />
+          </div>
+          <div>
+            <p class="font-bold text-sm">Oficina</p>
+            <p class="text-muted text-xs">Av. Gral. Andrés de Santa Cruz 270, Jesús María, Lima</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 rounded-xl bg-surface border border-border">
+          <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Icon name="clock" size={24} className="text-primary" />
+          </div>
+          <div>
+            <p class="font-bold text-sm">Horario</p>
+            <p class="text-muted text-xs">Lun-Vie 8:00-18:00 / Sáb 8:00-13:00</p>
           </div>
         </div>
       </div>
 
-      <div class="flex flex-col gap-4">
+      <div class="reveal reveal-delay-1 lg:col-span-3">
         <form 
           id="contact-form"
           action={formAction} 
           method="POST" 
-          class="flex flex-col gap-4"
+          class="flex flex-col gap-4 bg-surface rounded-2xl p-6 md:p-8 border border-border shadow-xl"
         >
-          
-          <label for="name" class="sr-only">Nombre Completo</label>
-          <input 
-            id="name"
-            name="name" 
-            required
-            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
-            placeholder="Nombre Completo" 
-            type="text"
-          />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-foreground mb-1">Nombre Completo</label>
+              <input 
+                id="name" name="name" required type="text"
+                class="w-full h-12 px-4 bg-background border border-border rounded-xl text-foreground focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
+                placeholder="Juan Pérez"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-foreground mb-1">Email</label>
+              <input 
+                id="email" name="email" required type="email"
+                class="w-full h-12 px-4 bg-background border border-border rounded-xl text-foreground focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
+                placeholder="correo@ejemplo.com"
+              />
+            </div>
+          </div>
 
-          <label for="email" class="sr-only">Email</label>
-          <input 
-            id="email"
-            name="email"
-            required
-            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
-            placeholder="Email" 
-            type="email"
-          />
+          <div>
+            <label for="phone" class="block text-sm font-medium text-foreground mb-1">Teléfono</label>
+            <input 
+              id="phone" name="phone" type="tel"
+              class="w-full h-12 px-4 bg-background border border-border rounded-xl text-foreground focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
+              placeholder="+51 999 999 999"
+            />
+          </div>
 
-          <label for="phone" class="sr-only">Teléfono</label>
-          <input 
-            id="phone"
-            name="phone"
-            class="w-full h-12 px-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
-            placeholder="Teléfono" 
-            type="tel"
-          />
-
-          <label for="message" class="sr-only">Mensaje</label>
-          <textarea 
-            id="message"
-            name="message"
-            required
-            class="w-full p-4 bg-background border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary outline-none" 
-            placeholder="Mensaje" 
-            rows="4"
-          ></textarea>
+          <div>
+            <label for="message" class="block text-sm font-medium text-foreground mb-1">Mensaje</label>
+            <textarea 
+              id="message" name="message" required rows="4"
+              class="w-full p-4 bg-background border border-border rounded-xl text-foreground focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" 
+              placeholder="Describa su requerimiento..."
+            ></textarea>
+          </div>
           
           <button 
-            id="submit-btn"
-            class="cursor-pointer rounded-lg h-12 px-6 bg-primary text-white text-base font-bold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed" 
-            type="submit"
+            id="submit-btn" type="submit"
+            class="cursor-pointer rounded-xl h-12 px-6 bg-primary text-white text-base font-bold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            Enviar Consulta
+            <span id="btn-text">Enviar Consulta</span>
+            <span id="btn-icon"><Icon name="arrow-right" size={18} /></span>
+            <span id="btn-loading" class="hidden size-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
           </button>
         </form>
-        <p id="form-status" class="hidden text-center text-sm font-bold"></p>
+        <div id="form-status" class="hidden text-center text-sm font-bold p-3 rounded-xl mt-4 transition-all"></div>
       </div>
 
     </div>
@@ -93,32 +119,23 @@ const formAction = "https://formspree.io/f/xanrveyk";
 </section>
 
 <script>
-  // Lógica para manejar el envío sin recargar y limpiar el formulario
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const btn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnIcon = document.getElementById('btn-icon');
+  const btnLoading = document.getElementById('btn-loading');
 
   if (form) {
-    // 1. Auto-llenado desde URL (si vienes de un producto)
-    const urlParams = new URLSearchParams(window.location.search);
-    const productRequest = urlParams.get('producto');
-    const messageField = document.getElementById('message');
-    
-    if (productRequest && messageField) {
-      messageField.value = `Hola, estoy interesado en cotizar el producto: ${productRequest}. \n\nMe gustaría saber...`;
-      // Limpiar URL para que no se vea feo (opcional)
-      // window.history.replaceState({}, document.title, "/#contacto");
-    }
-
     form.addEventListener('submit', async function(e) {
-      e.preventDefault(); // Evita la recarga de página
-      
+      e.preventDefault();
       const formData = new FormData(form);
-      
-      // Estado de carga
+
       if (btn) {
         btn.setAttribute('disabled', 'true');
-        btn.innerText = 'Enviando...';
+        btnText.classList.add('hidden');
+        btnIcon.classList.add('hidden');
+        btnLoading.classList.remove('hidden');
       }
       if (status) status.classList.add('hidden');
 
@@ -126,46 +143,36 @@ const formAction = "https://formspree.io/f/xanrveyk";
         const response = await fetch(form.getAttribute('action'), {
           method: form.getAttribute('method'),
           body: formData,
-          headers: {
-            'Accept': 'application/json' // Importante para Formspree
-          }
+          headers: { 'Accept': 'application/json' }
         });
 
         if (response.ok) {
-          // 1. LIMPIAR EL FORMULARIO
-          form.reset(); 
-          
-          // 2. Mostrar mensaje de éxito
+          form.reset();
           if (status) {
-            status.innerHTML = "¡Mensaje enviado con éxito!";
-            status.classList.remove('hidden', 'text-red-500');
-            status.classList.add('text-green-500');
+            status.innerHTML = '✓ ¡Mensaje enviado con éxito!';
+            status.classList.remove('hidden', 'text-red-600', 'bg-red-50', 'dark:bg-red-950', 'dark:text-red-400');
+            status.classList.add('text-green-600', 'bg-green-50', 'dark:bg-green-950', 'dark:text-green-400');
           }
         } else {
-          // Error del servidor
           if (status) {
             const data = await response.json();
-            if (Object.hasOwn(data, 'errors')) {
-              status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-            } else {
-              status.innerHTML = "Hubo un problema al enviar el mensaje.";
-            }
-            status.classList.remove('hidden', 'text-green-500');
-            status.classList.add('text-red-500');
+            status.innerHTML = data.errors ? data.errors.map(e => e.message).join(', ') : 'Error al enviar.';
+            status.classList.remove('hidden', 'text-green-600', 'bg-green-50', 'dark:bg-green-950', 'dark:text-green-400');
+            status.classList.add('text-red-600', 'bg-red-50', 'dark:bg-red-950', 'dark:text-red-400');
           }
         }
       } catch (error) {
-        // Error de red
         if (status) {
-          status.innerHTML = "Error de conexión. Intente nuevamente.";
-          status.classList.remove('hidden', 'text-green-500');
-          status.classList.add('text-red-500');
+          status.innerHTML = 'Error de conexión.';
+          status.classList.remove('hidden', 'text-green-600', 'bg-green-50', 'dark:bg-green-950', 'dark:text-green-400');
+          status.classList.add('text-red-600', 'bg-red-50', 'dark:bg-red-950', 'dark:text-red-400');
         }
       } finally {
-        // Restaurar botón
         if (btn) {
           btn.removeAttribute('disabled');
-          btn.innerText = 'Enviar Consulta';
+          btnText.classList.remove('hidden');
+          btnIcon.classList.remove('hidden');
+          btnLoading.classList.add('hidden');
         }
       }
     });

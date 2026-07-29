@@ -1,78 +1,67 @@
-<section class="w-full py-20" id="por-que-elegirnos">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col gap-10">
+---
+import Icon from "./Icon.astro";
+---
 
-      <div class="mb-4">
+<section class="w-full py-20 section-gradient" id="por-que-elegirnos" aria-label="Por qué elegirnos">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <div class="reveal">
         <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Por Qué Elegirnos</span>
         <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight mb-6">
-          Socios en su Camino al Éxito
+          Socios Estratégicos en su Operación
         </h2>
         <div class="h-1.5 w-20 bg-primary rounded-full mb-6"></div>
-        <p class="text-muted text-lg max-w-3xl">
-          Comprometidos con la durabilidad, eficiencia y la experiencia que su operación necesita.
+        <p class="text-muted text-lg">
+          Garantizamos la continuidad operativa con soluciones integrales y soporte técnico en terreno.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="reveal reveal-delay-1 aspect-video rounded-xl overflow-hidden bg-surface border border-border shadow-xl">
+        <img
+          class="w-full h-full object-cover"
+          alt="Operación minera con maquinaria pesada"
+          src="/images/why-us.jpg"
+          width="1920"
+          height="1080"
+          loading="lazy"
+        />
+      </div>
 
-        <div
-          class="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-colors"
-        >
-          <div class="text-primary">
-            <span class="material-symbols-outlined !text-4xl">shield</span>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h3 
-              class="text-foreground text-xl font-bold leading-tight"
-            >
-              Máxima Durabilidad
-            </h3>
-            <p class="text-muted text-sm font-normal leading-normal">
-              Neumáticos diseñados para soportar las condiciones más extremas y
-              prolongar la vida útil de sus equipos.
-            </p>
-          </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+      <div class="reveal reveal-delay-1 flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
+        <div class="inline-flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <Icon name="shield" size={28} />
         </div>
-
-        <div
-          class="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-colors"
-        >
-          <div class="text-primary">
-            <span class="material-symbols-outlined !text-4xl">local_shipping</span>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h3 
-              class="text-foreground text-xl font-bold leading-tight"
-            >
-              Experiencia Minera
-            </h3>
-            <p class="text-text-muted text-sm font-normal leading-normal">
-              Años de experiencia en el sector nos permiten ofrecer soluciones a
-              la medida de sus desafíos operativos.
-            </p>
-          </div>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-foreground text-xl font-black leading-tight">Máxima Durabilidad</h3>
+          <p class="text-muted text-sm">Neumáticos diseñados para condiciones extremas con mayor vida útil.</p>
         </div>
+      </div>
 
-        <div
-          class="flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-colors"
-        >
-          <div class="text-primary">
-            <span class="material-symbols-outlined !text-4xl">trending_up</span>
-          </div>
-          <div class="flex flex-col gap-2">
-            <h3 
-              class="text-foreground text-xl font-bold leading-tight"
-            >
-              Eficiencia Comprobada
-            </h3>
-            <p class="text-text-muted text-sm font-normal leading-normal">
-              Optimice sus costos y reduzca el tiempo de inactividad con nuestros
-              productos y servicios de rencauche.
-            </p>
-          </div>
+      <div class="reveal reveal-delay-2 flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
+        <div class="inline-flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <Icon name="truck" size={28} />
         </div>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-foreground text-xl font-black leading-tight">Experiencia Minera</h3>
+          <p class="text-muted text-sm">Más de 20 años resolviendo desafíos operativos en minería peruana.</p>
+        </div>
+      </div>
 
+      <div class="reveal reveal-delay-3 flex flex-col gap-4 rounded-xl border border-border bg-surface p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
+        <div class="inline-flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <Icon name="trending" size={28} />
+        </div>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-foreground text-xl font-black leading-tight">Eficiencia Comprobada</h3>
+          <p class="text-muted text-sm">Optimice costos y reduzca tiempos de inactividad con productos certificados.</p>
+        </div>
       </div>
     </div>
+
   </div>
 </section>

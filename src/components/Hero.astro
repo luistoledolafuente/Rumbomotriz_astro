@@ -1,26 +1,28 @@
 ---
-// src/components/Hero.astro
+import Icon from "./Icon.astro";
 
-// Configuración de los videos de fondo
 const slides = [
-  { video: "/videos/hero-1.mp4", poster: "/images/hero-background.png" }, // Video 1
-  { video: "/videos/hero-2.mp4", poster: "/images/hero-background.png" }, // Video 2 (puedes repetir si no tienes más)
+  { video: "/videos/hero-1.mp4", poster: "/images/hero.webp" },
+  { video: "/videos/hero-2.mp4", poster: "/images/hero.webp" },
 ];
 ---
 
-<section class="w-full py-20" id="inicio">
-  <div class="relative w-full min-h-[60vh] flex flex-col gap-8 items-center justify-center p-8 text-center rounded-xl overflow-hidden shadow-2xl bg-black group">
+<section class="w-full py-20" id="inicio" aria-label="Hero principal">
+  <div class="relative w-full min-h-[70vh] flex flex-col gap-8 items-center justify-center p-8 text-center rounded-xl overflow-hidden shadow-2xl bg-black group">
     
     <div class="absolute inset-0 w-full h-full z-0">
       {slides.map((slide, index) => (
-        <div class={`video-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}>
-          <div class="absolute inset-0 bg-black/60 z-10"></div> <video
+        <div class={`video-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`} role="presentation">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
+          <video
             autoplay
             muted
             loop
             playsinline
-            class="w-full h-full object-cover"
+            preload="metadata"
+            class="w-full h-full object-cover scale-105"
             poster={slide.poster}
+            aria-hidden="true"
           >
             <source src={slide.video} type="video/mp4" />
           </video>
@@ -28,94 +30,82 @@ const slides = [
       ))}
     </div>
 
-    <div class="relative z-20 flex flex-col gap-4 max-w-3xl animate-fade-in">
-      <h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter drop-shadow-lg">
-        Soluciones de Alto Rendimiento para la Minería
+    <div class="relative z-20 flex flex-col gap-6 max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mx-auto">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true"></span>
+        Expertos en Minería desde 2004
+      </div>
+
+      <h1 class="text-white text-4xl md:text-7xl font-black leading-tight tracking-tighter drop-shadow-lg">
+        Soluciones de Alto <span class="text-primary">Rendimiento</span><br />
+        <span class="text-3xl md:text-5xl font-bold">para la Minería</span>
       </h1>
 
-      <p class="text-gray-200 text-base md:text-lg font-normal leading-normal drop-shadow-md">
-        Neumáticos duraderos y servicios de rencauche expertos para maximizar la
-        eficiencia y seguridad de su operación.
+      <p class="text-gray-300 text-base md:text-lg leading-relaxed drop-shadow-md max-w-2xl mx-auto">
+        Neumáticos OTR, rencauche industrial y asesoría técnica especializada.
       </p>
     </div>
 
-    <div class="relative z-20 flex flex-wrap gap-4 justify-center animate-fade-in animation-delay-200">
+    <div class="relative z-20 flex flex-wrap gap-4 justify-center">
       <a
-        href="/catalogo"
-        class="flex h-12 px-6 rounded-lg items-center justify-center
+        href="/#servicios"
+        class="flex h-12 px-8 rounded-xl items-center justify-center
                bg-primary text-white font-bold
-               hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
+               hover:bg-primary-dark transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30 shadow-lg gap-2"
       >
-        Ver Neumáticos
+        Nuestros Servicios
+        <Icon name="arrow-right" size={20} />
       </a>
 
       <a
-        href="/#rencauche"
-        class="flex h-12 px-6 rounded-lg items-center justify-center
-               bg-white text-gray-900 font-bold
-               hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+        href="https://wa.me/51930599112?text=Hola%20Rumbomotriz%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20sobre%20sus%20servicios."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex h-12 px-8 rounded-xl items-center justify-center
+               bg-white/10 backdrop-blur-sm text-white font-bold border border-white/30
+               hover:bg-white/20 transition-all hover:scale-105 shadow-lg gap-2"
       >
-        Servicio de Rencauche
+        <svg viewBox="0 0 32 32" class="w-5 h-5 fill-current" aria-hidden="true"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.837.742 5.49 2.037 7.788L0 32l8.414-2.188A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.091c-2.495 0-4.936-.67-7.057-1.94l-.505-.297-4.99 1.297 1.33-4.858-.325-.52A13.03 13.03 0 012.91 16C2.91 8.798 8.798 2.91 16 2.91S29.09 8.798 29.09 16 23.202 29.09 16 29.09zm7.457-9.66c-.407-.203-2.406-1.186-2.777-1.32-.37-.136-.64-.203-.91.203-.27.407-1.05 1.32-1.286 1.59-.237.27-.474.304-.88.101-.407-.203-1.717-.634-3.268-2.023-1.206-1.078-2.02-2.41-2.257-2.817-.237-.407-.025-.627.178-.83.182-.182.407-.474.61-.711.203-.237.27-.407.407-.678.136-.27.068-.508-.034-.711-.102-.203-.91-2.202-1.247-3.014-.337-.813-.678-.703-.91-.711h-.779c-.27 0-.711.101-1.084.508-.372.407-1.422 1.389-1.422 3.387s1.456 3.928 1.659 4.198c.203.27 2.86 4.37 6.92 6.126.967.417 1.722.666 2.31.83.973.31 1.86.267 2.56.162.78-.117 2.406-.983 2.746-1.93.34-.948.34-1.76.237-1.93-.101-.17-.372-.27-.779-.474z"/></svg>
+        Cotizar por WhatsApp
       </a>
     </div>
 
-    <div class="absolute bottom-6 z-30 flex gap-2">
-      {slides.map((_, index) => (
-        <div class="indicator w-2 h-2 rounded-full bg-white/50 transition-all duration-300"></div>
-      ))}
+    <div class="absolute bottom-6 z-30 flex flex-col items-center gap-3" aria-hidden="true">
+      <div class="flex gap-2">
+        {slides.map((_, index) => (
+          <div class="indicator w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-500"></div>
+        ))}
+      </div>
     </div>
 
   </div>
 </section>
 
 <script>
-  // Script simple para rotar los videos cada 6 segundos
   const slides = document.querySelectorAll('.video-slide');
   const indicators = document.querySelectorAll('.indicator');
   let currentSlide = 0;
 
   function nextSlide() {
-    // Ocultar actual
-    slides[currentSlide].classList.remove('opacity-100');
-    slides[currentSlide].classList.add('opacity-0');
+    slides[currentSlide]?.classList.remove('opacity-100');
+    slides[currentSlide]?.classList.add('opacity-0');
     if(indicators[currentSlide]) {
-        indicators[currentSlide].classList.remove('bg-white', 'w-4');
-        indicators[currentSlide].classList.add('bg-white/50');
+        indicators[currentSlide].classList.remove('bg-white', 'scale-125');
+        indicators[currentSlide].classList.add('bg-white/40');
     }
 
-    // Calcular siguiente
     currentSlide = (currentSlide + 1) % slides.length;
 
-    // Mostrar siguiente
-    slides[currentSlide].classList.remove('opacity-0');
-    slides[currentSlide].classList.add('opacity-100');
+    slides[currentSlide]?.classList.remove('opacity-0');
+    slides[currentSlide]?.classList.add('opacity-100');
     if(indicators[currentSlide]) {
-        indicators[currentSlide].classList.remove('bg-white/50');
-        indicators[currentSlide].classList.add('bg-white', 'w-4');
+        indicators[currentSlide].classList.remove('bg-white/40');
+        indicators[currentSlide].classList.add('bg-white', 'scale-125');
     }
   }
 
-  // Iniciar solo si hay más de 1 video
   if (slides.length > 1) {
-    // Activar primer indicador
-    if(indicators[0]) indicators[0].classList.add('bg-white', 'w-4');
-    setInterval(nextSlide, 6000); // Cambia cada 6 segundos
+    if(indicators[0]) indicators[0].classList.add('bg-white', 'scale-125');
+    setInterval(nextSlide, 6000);
   }
 </script>
-
-<style>
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  .animation-delay-200 {
-    animation-delay: 0.2s;
-  }
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>

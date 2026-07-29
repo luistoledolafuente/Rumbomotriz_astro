@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import Icon from "./Icon.astro";
 ---
 
 <header 
@@ -9,9 +10,9 @@ import ThemeToggle from "./ThemeToggle.astro";
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
 
-      <a href="/#" class="flex items-center gap-3">
+      <a href="/#" class="flex items-center gap-3" aria-label="Ir al inicio">
         <div class="text-primary transition-transform duration-300 hover:scale-110">
-          <span class="material-symbols-outlined !text-4xl">tire_repair</span>
+          <Icon name="tire" size={36} />
         </div>
         <div class="flex flex-col">
           <span class="text-xl font-black tracking-tighter text-foreground group-[.is-scrolled]:text-white leading-none">RUMBO</span>
@@ -19,47 +20,69 @@ import ThemeToggle from "./ThemeToggle.astro";
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
         <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#inicio">Inicio</a>
         <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#sobre-nosotros">Sobre Nosotros</a>
-        <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/catalogo">Neumáticos</a>
-        <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#rencauche">Rencauche</a>
+        <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#servicios">Servicios</a>
+        <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#proceso">Proceso</a>
+        <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#testimonios">Testimonios</a>
         <a class="text-base font-medium text-foreground group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#contacto">Contacto</a>
       </nav>
 
       <div class="hidden md:flex items-center gap-4">
-        <div class="cursor-pointer flex items-center justify-center hover:opacity-80 transition-opacity">
-          <ThemeToggle />
-        </div>
-        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors" href="/#contacto">
-          <span class="truncate">Cotizar Ahora</span>
+        <ThemeToggle />
+        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30" href="/#contacto">
+          Cotizar Ahora
         </a>
       </div>
 
       <div class="flex md:hidden items-center gap-4">
         <ThemeToggle /> 
-        <button id="mobile-menu-btn" class="text-foreground group-[.is-scrolled]:text-white focus:outline-none p-2" aria-label="Menu">
-          <span class="material-symbols-outlined !text-3xl">menu</span>
+        <button id="mobile-menu-btn" class="text-foreground group-[.is-scrolled]:text-white focus:outline-none p-2 relative z-50" aria-label="Abrir menú de navegación">
+          <span id="menu-icon"><Icon name="menu" size={28} /></span>
         </button>
       </div>
 
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border shadow-lg flex-col p-6 gap-6 transition-all duration-300">
-    <nav class="flex flex-col gap-6 text-center">
-      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#inicio">Inicio</a>
-      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#sobre-nosotros">Sobre Nosotros</a>
-      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/catalogo">Neumáticos</a>
-      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#rencauche">Rencauche</a>
-      <a class="mobile-link text-xl font-medium text-foreground hover:text-primary" href="/#contacto">Contacto</a>
-    </nav>
-    <a 
-      href="/#contacto"
-      class="w-full bg-primary text-white py-3 rounded-lg font-bold text-center text-lg shadow-md hover:bg-primary/90 transition-colors"
-    >
-      Cotizar Ahora
-    </a>
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-background shadow-2xl z-40 hidden translate-x-full transition-all duration-300 ease-in-out p-8">
+    <div class="flex flex-col justify-between h-full">
+      <nav class="flex flex-col gap-6 mt-16" aria-label="Navegación móvil">
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#inicio">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Inicio
+        </a>
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#sobre-nosotros">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Sobre Nosotros
+        </a>
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#servicios">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Servicios
+        </a>
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#proceso">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Proceso
+        </a>
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#testimonios">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Testimonios
+        </a>
+        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#contacto">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+          Contacto
+        </a>
+      </nav>
+      <a 
+        href="/#contacto"
+        class="w-full bg-primary text-white py-3 rounded-xl font-bold text-center text-base hover:bg-primary-dark transition-colors shadow-lg"
+      >
+        Cotizar Ahora
+      </a>
+    </div>
   </div>
 </header>
 
@@ -68,9 +91,10 @@ import ThemeToggle from "./ThemeToggle.astro";
     const header = document.getElementById('main-header');
     const menuBtn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const menuIcon = document.getElementById('menu-icon');
     const menuLinks = document.querySelectorAll('.mobile-link');
 
-    // Scroll Effect
     function updateHeader() {
       if (window.scrollY > 20) {
         header?.classList.add('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
@@ -81,37 +105,44 @@ import ThemeToggle from "./ThemeToggle.astro";
       }
     }
 
-    window.addEventListener('scroll', updateHeader);
-    updateHeader(); // Init on load
+    function openMenu() {
+      menu?.classList.remove('hidden', 'translate-x-full');
+      menu?.classList.add('translate-x-0');
+      backdrop?.classList.remove('hidden');
+      setTimeout(() => backdrop?.classList.remove('opacity-0'), 10);
+      if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      document.body.style.overflow = 'hidden';
+    }
 
-    // Mobile Menu
+    function closeMenu() {
+      menu?.classList.remove('translate-x-0');
+      menu?.classList.add('translate-x-full');
+      backdrop?.classList.add('opacity-0');
+      if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+      document.body.style.overflow = '';
+      setTimeout(() => backdrop?.classList.add('hidden'), 300);
+    }
+
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+
     if (menuBtn && menu) {
-      // Clean up previous listeners if any (though setupHeader runs once per page view usually)
-      // Simpler to just add new ones, as old elements are replaced.
-      
       menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-      });
-
-      // Close menu when clicking outside or on a link
-      document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target as Node) && !menuBtn.contains(e.target as Node)) {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
+        if (menu.classList.contains('translate-x-full') || menu.classList.contains('hidden')) {
+          openMenu();
+        } else {
+          closeMenu();
         }
       });
 
+      backdrop?.addEventListener('click', closeMenu);
+
       menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
-        });
+        link.addEventListener('click', closeMenu);
       });
     }
   }
 
-  // Run on view transition navigation (and initial load if ViewTransitions enabled)
   document.addEventListener('astro:page-load', setupHeader);
 </script>

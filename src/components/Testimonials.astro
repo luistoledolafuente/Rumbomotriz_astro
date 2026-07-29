@@ -1,0 +1,73 @@
+---
+import Icon from "./Icon.astro";
+
+const testimonials = [
+  {
+    avatar: "/images/testimonial-1.jpg",
+    quote: "Rumbomotriz redujo en 35% nuestros costos de neumáticos gracias a su servicio de rencauche y asesoría técnica en terreno.",
+    author: "Carlos Mendoza",
+    role: "Superintendente de Mantenimiento, Minera Los Andes",
+    rating: 5
+  },
+  {
+    avatar: "/images/testimonial-2.jpg",
+    quote: "La disponibilidad inmediata de neumáticos OTR y la respuesta rápida del equipo han sido clave para nuestra operación continua.",
+    author: "María Gutiérrez",
+    role: "Jefe de Logística, Cía. Minera del Sur",
+    rating: 5
+  },
+  {
+    avatar: "/images/testimonial-3.jpg",
+    quote: "Trabajamos con ellos desde hace 8 años. Su conocimiento del sector y calidad de productos nos dan total confianza.",
+    author: "Roberto Huamán",
+    role: "Gerente de Operaciones, Minería y Construcción S.A.C.",
+    rating: 5
+  }
+];
+---
+
+<section class="w-full py-20 section-gradient" id="testimonios" aria-label="Testimonios">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16 text-center">
+      <span class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">Testimonios</span>
+      <h2 class="text-foreground text-3xl md:text-4xl font-black leading-tight mb-6">
+        Lo que Dicen <span class="text-primary">Nuestros Clientes</span>
+      </h2>
+      <div class="h-1.5 w-20 bg-primary rounded-full mb-6 mx-auto"></div>
+      <p class="text-muted text-lg max-w-2xl mx-auto">
+        Más de 500 empresas mineras confían en nosotros.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((t, i) => (
+        <div class={`reveal reveal-delay-${i + 1} flex flex-col gap-5 p-6 rounded-2xl bg-surface border border-border hover:border-primary/30 transition-all duration-300`}>
+          <div class="flex items-center gap-4">
+            <div class="size-14 rounded-full overflow-hidden bg-background shrink-0 border-2 border-border">
+              <img
+                class="w-full h-full object-cover"
+                src={t.avatar}
+                alt={t.author}
+                width="56"
+                height="56"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col">
+              <p class="text-foreground font-bold text-sm">{t.author}</p>
+              <p class="text-muted text-xs">{t.role}</p>
+            </div>
+          </div>
+          <div class="flex gap-1">
+            {Array.from({ length: t.rating }).map(() => (
+              <Icon name="star" size={16} className="text-amber-400" />
+            ))}
+          </div>
+          <p class="text-muted text-sm leading-relaxed">"{t.quote}"</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

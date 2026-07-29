@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rumbomotriz.cl/sitemap-index.xml
+Sitemap: https://rumbomotriz.com/sitemap-index.xml

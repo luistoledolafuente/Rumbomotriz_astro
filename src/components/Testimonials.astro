@@ -1,23 +1,25 @@
 ---
 import Icon from "./Icon.astro";
 
+const A = import.meta.env.PUBLIC_ASSETS_URL || '';
+
 const testimonials = [
   {
-    avatar: "/images/testimonial-1.jpg",
+    avatar: `${A}/images/testimonial-1.jpg`,
     quote: "Rumbomotriz redujo en 35% nuestros costos de neumáticos gracias a su servicio de rencauche y asesoría técnica en terreno.",
     author: "Carlos Mendoza",
     role: "Superintendente de Mantenimiento, Minera Los Andes",
     rating: 5
   },
   {
-    avatar: "/images/testimonial-2.jpg",
+    avatar: `${A}/images/testimonial-2.jpg`,
     quote: "La disponibilidad inmediata de neumáticos OTR y la respuesta rápida del equipo han sido clave para nuestra operación continua.",
     author: "María Gutiérrez",
     role: "Jefe de Logística, Cía. Minera del Sur",
     rating: 5
   },
   {
-    avatar: "/images/testimonial-3.jpg",
+    avatar: `${A}/images/testimonial-3.jpg`,
     quote: "Trabajamos con ellos desde hace 8 años. Su conocimiento del sector y calidad de productos nos dan total confianza.",
     author: "Roberto Huamán",
     role: "Gerente de Operaciones, Minería y Construcción S.A.C.",

@@ -11,10 +11,13 @@ export interface Props {
   canonical?: string;
 }
 
+const A = import.meta.env.PUBLIC_ASSETS_URL || '';
+const defaultImage = `${A}/images/hero-background.png`;
+
 const { 
   title, 
   description = "Rumbomotriz: Soluciones Integrales en Neumáticos y Rencauche para la Minería y Transporte en Perú.",
-  image = "/images/hero-background.png", 
+  image = defaultImage, 
   canonical = Astro.url.href 
 } = Astro.props;
 ---

@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rumbomotriz.cl',
+  site: 'https://rumbomotriz.com',
   vite: {
     plugins: [tailwindcss()]
   },

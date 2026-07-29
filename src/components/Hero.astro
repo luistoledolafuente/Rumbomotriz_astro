@@ -1,9 +1,11 @@
 ---
 import Icon from "./Icon.astro";
 
+const A = import.meta.env.PUBLIC_ASSETS_URL || '';
+
 const slides = [
-  { video: "/videos/hero-1.mp4", poster: "/images/hero.webp" },
-  { video: "/videos/hero-2.mp4", poster: "/images/hero.webp" },
+  { video: `${A}/videos/hero-1.mp4`, poster: `${A}/images/hero.webp` },
+  { video: `${A}/videos/hero-2.mp4`, poster: `${A}/images/hero.webp` },
 ];
 ---
 

@@ -1,24 +1,26 @@
 ---
 import Icon from "./Icon.astro";
 
+const A = import.meta.env.PUBLIC_ASSETS_URL || '';
+
 const steps = [
   {
-    number: "01", icon: "phone", image: "/images/process-diagnosis.jpg",
+    number: "01", icon: "phone", image: `${A}/images/process-diagnosis.jpg`,
     title: "Diagnóstico",
     description: "Analizamos su operación y maquinaria para identificar la solución óptima."
   },
   {
-    number: "02", icon: "gear", image: "/images/process-proposal.jpg",
+    number: "02", icon: "gear", image: `${A}/images/process-proposal.jpg`,
     title: "Propuesta Técnica",
     description: "Cotización detallada con especificaciones, plazos y condiciones comerciales."
   },
   {
-    number: "03", icon: "truck", image: "/images/process-delivery.jpg",
+    number: "03", icon: "truck", image: `${A}/images/process-delivery.jpg`,
     title: "Suministro",
     description: "Logística de entrega en su operación o ejecución del servicio certificado."
   },
   {
-    number: "04", icon: "headset", image: "/images/process-support.jpg",
+    number: "04", icon: "headset", image: `${A}/images/process-support.jpg`,
     title: "Soporte Continuo",
     description: "Acompañamiento post-venta con inspecciones periódicas."
   }

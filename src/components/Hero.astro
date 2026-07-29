@@ -4,8 +4,8 @@ import Icon from "./Icon.astro";
 const A = import.meta.env.PUBLIC_ASSETS_URL || '';
 
 const slides = [
-  { video: `${A}/videos/hero-1.mp4`, poster: `${A}/images/hero.webp` },
-  { video: `${A}/videos/hero-2.mp4`, poster: `${A}/images/hero.webp` },
+  { video: `${A}/videos/hero-1.mp4` },
+  { video: `${A}/videos/hero-2.mp4` },
 ];
 ---
 
@@ -21,9 +21,7 @@ const slides = [
             muted
             loop
             playsinline
-            preload="metadata"
             class="w-full h-full object-cover scale-105"
-            poster={slide.poster}
             aria-hidden="true"
             data-src={index !== 0 ? slide.video : undefined}
           >
@@ -34,11 +32,6 @@ const slides = [
     </div>
 
     <div class="relative z-20 flex flex-col gap-6 max-w-4xl">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mx-auto">
-        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true"></span>
-        Expertos en Minería desde 2004
-      </div>
-
       <h1 class="text-white text-4xl md:text-7xl font-black leading-tight tracking-tighter drop-shadow-lg">
         Soluciones de Alto <span class="text-primary">Rendimiento</span><br />
         <span class="text-3xl md:text-5xl font-bold">para la Minería</span>
@@ -73,20 +66,12 @@ const slides = [
       </a>
     </div>
 
-    <div class="absolute bottom-6 z-30 flex flex-col items-center gap-3" aria-hidden="true">
-      <div class="flex gap-2">
-        {slides.map((_, index) => (
-          <div class="indicator w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-500"></div>
-        ))}
-      </div>
-    </div>
 
   </div>
 </section>
 
 <script>
   const slides = document.querySelectorAll('.video-slide');
-  const indicators = document.querySelectorAll('.indicator');
   let currentSlide = 0;
 
   function loadVideoSource(slideIndex) {
@@ -108,10 +93,6 @@ const slides = [
   function nextSlide() {
     slides[currentSlide]?.classList.remove('opacity-100');
     slides[currentSlide]?.classList.add('opacity-0');
-    if(indicators[currentSlide]) {
-        indicators[currentSlide].classList.remove('bg-white', 'scale-125');
-        indicators[currentSlide].classList.add('bg-white/40');
-    }
 
     currentSlide = (currentSlide + 1) % slides.length;
 
@@ -119,14 +100,9 @@ const slides = [
 
     slides[currentSlide]?.classList.remove('opacity-0');
     slides[currentSlide]?.classList.add('opacity-100');
-    if(indicators[currentSlide]) {
-        indicators[currentSlide].classList.remove('bg-white/40');
-        indicators[currentSlide].classList.add('bg-white', 'scale-125');
-    }
   }
 
   if (slides.length > 1) {
-    if(indicators[0]) indicators[0].classList.add('bg-white', 'scale-125');
     setInterval(nextSlide, 6000);
   }
 </script>

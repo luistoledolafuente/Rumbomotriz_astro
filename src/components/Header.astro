@@ -96,6 +96,7 @@ import Icon from "./Icon.astro";
     const menuLinks = document.querySelectorAll('.mobile-link');
 
     let isOpen = false;
+    let closeTimer = null;
 
     function updateHeader() {
       if (window.scrollY > 20) {
@@ -108,22 +109,28 @@ import Icon from "./Icon.astro";
     }
 
     function openMenu() {
+      if (closeTimer) clearTimeout(closeTimer);
       isOpen = true;
-      menu?.classList.remove('translate-x-full', 'pointer-events-none');
-      menu?.classList.add('translate-x-0');
       backdrop?.classList.remove('pointer-events-none', 'opacity-0');
       backdrop?.classList.add('opacity-100');
+      menu?.classList.remove('pointer-events-none');
+      requestAnimationFrame(() => {
+        menu?.classList.remove('translate-x-full');
+        menu?.classList.add('translate-x-0');
+      });
       if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
       document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
       isOpen = false;
-      menu?.classList.remove('translate-x-0');
-      menu?.classList.add('translate-x-full');
-      menu?.classList.add('pointer-events-none');
       backdrop?.classList.remove('opacity-100');
       backdrop?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('translate-x-0');
+      menu?.classList.add('translate-x-full');
+      closeTimer = setTimeout(() => {
+        menu?.classList.add('pointer-events-none');
+      }, 320);
       if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
       document.body.style.overflow = '';
     }

@@ -25,8 +25,9 @@ const slides = [
             class="w-full h-full object-cover scale-105"
             poster={slide.poster}
             aria-hidden="true"
+            data-src={index !== 0 ? slide.video : undefined}
           >
-            <source src={slide.video} type="video/mp4" />
+            {index === 0 ? <source src={slide.video} type="video/mp4" /> : null}
           </video>
         </div>
       ))}
@@ -88,6 +89,22 @@ const slides = [
   const indicators = document.querySelectorAll('.indicator');
   let currentSlide = 0;
 
+  function loadVideoSource(slideIndex) {
+    const slide = slides[slideIndex];
+    if (!slide) return;
+    const video = slide.querySelector('video');
+    if (video && !video.querySelector('source')) {
+      const src = video.getAttribute('data-src');
+      if (src) {
+        const source = document.createElement('source');
+        source.src = src;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+        video.load();
+      }
+    }
+  }
+
   function nextSlide() {
     slides[currentSlide]?.classList.remove('opacity-100');
     slides[currentSlide]?.classList.add('opacity-0');
@@ -97,6 +114,8 @@ const slides = [
     }
 
     currentSlide = (currentSlide + 1) % slides.length;
+
+    loadVideoSource(currentSlide);
 
     slides[currentSlide]?.classList.remove('opacity-0');
     slides[currentSlide]?.classList.add('opacity-100');

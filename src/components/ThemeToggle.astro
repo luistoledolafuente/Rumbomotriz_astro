@@ -1,5 +1,5 @@
 <button
-  class="theme-toggle-btn flex size-10 items-center justify-center rounded-full text-foreground hover:bg-muted/10 transition-colors cursor-pointer"
+  class="theme-toggle-btn flex size-10 items-center justify-center rounded-full text-foreground hover:bg-muted/10 transition-colors cursor-pointer active:scale-[0.92]"
   aria-label="Cambiar modo claro/oscuro"
   title="Cambiar modo claro/oscuro"
 >
@@ -13,27 +13,23 @@
   function initThemeToggle() {
     const storageKey = 'theme-preference';
     const classDark = 'dark';
-    const btnClass = '.theme-toggle-btn';
 
     function getThemePreference() {
-      return document.documentElement.classList.contains(classDark) ? 'dark' : 'light';
+      const stored = localStorage.getItem(storageKey);
+      if (stored === 'light' || stored === 'dark') return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
     function applyTheme(theme) {
-      const isDark = theme === 'dark';
-      document.documentElement.classList.toggle(classDark, isDark);
+      document.documentElement.classList.toggle(classDark, theme === 'dark');
     }
 
     applyTheme(getThemePreference());
 
-    const buttons = document.querySelectorAll(btnClass);
-    buttons.forEach(btn => {
-      const newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-      
-      newBtn.addEventListener('click', () => {
-        const currentTheme = getThemePreference();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains(classDark);
+        const newTheme = isDark ? 'light' : 'dark';
         applyTheme(newTheme);
         localStorage.setItem(storageKey, newTheme);
       });

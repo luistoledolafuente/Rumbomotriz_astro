@@ -16,7 +16,7 @@ import Icon from "./Icon.astro";
         </div>
         <div class="flex flex-col">
           <span class="text-xl font-black tracking-tighter text-foreground group-[.is-scrolled]:text-white leading-none">RUMBO</span>
-          <span class="text-sm font-bold tracking-widest text-muted group-[.is-scrolled]:text-neutral-400 leading-none">MOTRIZ</span>
+          <span class="text-sm font-bold tracking-widest text-muted group-[.is-scrolled]:text-neutral-300 leading-none">MOTRIZ</span>
         </div>
       </a>
 
@@ -31,14 +31,14 @@ import Icon from "./Icon.astro";
 
       <div class="hidden md:flex items-center gap-4">
         <ThemeToggle />
-        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30" href="/#contacto">
+        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30 active:scale-[0.97]" href="/#contacto">
           Cotizar Ahora
         </a>
       </div>
 
       <div class="flex md:hidden items-center gap-4">
         <ThemeToggle /> 
-        <button id="mobile-menu-btn" class="text-foreground group-[.is-scrolled]:text-white focus:outline-none p-2 relative z-50" aria-label="Abrir menú de navegación">
+        <button id="mobile-menu-btn" class="text-foreground group-[.is-scrolled]:text-white focus:outline-none p-2 relative z-50 active:scale-[0.92] transition-transform" aria-label="Abrir menú de navegación">
           <span id="menu-icon"><Icon name="menu" size={28} /></span>
         </button>
       </div>
@@ -46,9 +46,9 @@ import Icon from "./Icon.astro";
     </div>
   </div>
 
-  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 pointer-events-none opacity-0 transition-opacity duration-300"></div>
 
-  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-background shadow-2xl z-40 hidden translate-x-full transition-all duration-300 ease-in-out p-8">
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-background shadow-2xl z-40 pointer-events-none translate-x-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] p-8">
     <div class="flex flex-col justify-between h-full">
       <nav class="flex flex-col gap-6 mt-16" aria-label="Navegación móvil">
         <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#inicio">
@@ -78,7 +78,7 @@ import Icon from "./Icon.astro";
       </nav>
       <a 
         href="/#contacto"
-        class="w-full bg-primary text-white py-3 rounded-xl font-bold text-center text-base hover:bg-primary-dark transition-colors shadow-lg"
+        class="w-full bg-primary text-white py-3 rounded-xl font-bold text-center text-base hover:bg-primary-dark transition-colors shadow-lg active:scale-[0.97]"
       >
         Cotizar Ahora
       </a>
@@ -95,6 +95,8 @@ import Icon from "./Icon.astro";
     const menuIcon = document.getElementById('menu-icon');
     const menuLinks = document.querySelectorAll('.mobile-link');
 
+    let isOpen = false;
+
     function updateHeader() {
       if (window.scrollY > 20) {
         header?.classList.add('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
@@ -106,21 +108,28 @@ import Icon from "./Icon.astro";
     }
 
     function openMenu() {
-      menu?.classList.remove('hidden', 'translate-x-full');
+      isOpen = true;
+      menu?.classList.remove('translate-x-full', 'pointer-events-none');
       menu?.classList.add('translate-x-0');
-      backdrop?.classList.remove('hidden');
-      setTimeout(() => backdrop?.classList.remove('opacity-0'), 10);
+      backdrop?.classList.remove('pointer-events-none', 'opacity-0');
+      backdrop?.classList.add('opacity-100');
       if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
       document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
+      isOpen = false;
       menu?.classList.remove('translate-x-0');
       menu?.classList.add('translate-x-full');
-      backdrop?.classList.add('opacity-0');
+      menu?.classList.add('pointer-events-none');
+      backdrop?.classList.remove('opacity-100');
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
       if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
       document.body.style.overflow = '';
-      setTimeout(() => backdrop?.classList.add('hidden'), 300);
+    }
+
+    function toggleMenu() {
+      isOpen ? closeMenu() : openMenu();
     }
 
     window.addEventListener('scroll', updateHeader);
@@ -129,11 +138,7 @@ import Icon from "./Icon.astro";
     if (menuBtn && menu) {
       menuBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (menu.classList.contains('translate-x-full') || menu.classList.contains('hidden')) {
-          openMenu();
-        } else {
-          closeMenu();
-        }
+        toggleMenu();
       });
 
       backdrop?.addEventListener('click', closeMenu);

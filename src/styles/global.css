@@ -64,17 +64,7 @@ html {
 
 body {
   @apply bg-background text-foreground font-display antialiased;
-  padding-left: 1rem;
-  padding-right: 1rem;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-@media (min-width: 768px) {
-  body { padding-left: 5rem; padding-right: 5rem; }
-}
-
-@media (min-width: 1024px) {
-  body { padding-left: 10rem; padding-right: 10rem; }
 }
 
 ::selection {
@@ -121,4 +111,26 @@ body {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group-hover\\:scale-110:hover {
+    transform: scale(1.1);
+  }
+  .group-hover\\:-translate-y-2:hover {
+    transform: translateY(-0.5rem);
+  }
 }

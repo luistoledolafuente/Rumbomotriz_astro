@@ -9,7 +9,16 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rumbomotriz.com',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      cssMinify: 'lightningcss',
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
+        }
+      }
+    }
   },
 
   integrations: [sitemap()]

@@ -36,8 +36,8 @@
 }
 
 :root {
-  --primary: #d10000;
-  --primary-dark: #a30000;
+  --primary: #b80000;
+  --primary-dark: #8a0000;
 
   --background: #f8f5f5;
   --surface: #ffffff;
@@ -47,6 +47,9 @@
 }
 
 .dark {
+  --primary: #ff4040;
+  --primary-dark: #cc0000;
+
   --background: #121212;
   --surface: #1a1a1a;
   --border: #2a2a2a;

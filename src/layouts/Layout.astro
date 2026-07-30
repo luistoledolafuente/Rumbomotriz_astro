@@ -99,5 +99,20 @@ const {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }, { timeout: 1000 });
+
+  setTimeout(() => {
+    const key = 'theme-preference';
+    function apply(t) {
+      document.documentElement.classList.toggle('dark', t === 'dark');
+    }
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        const next = isDark ? 'light' : 'dark';
+        apply(next);
+        localStorage.setItem(key, next);
+      });
+    });
+  }, 300);
 </script>
 </html>

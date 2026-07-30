@@ -104,5 +104,5 @@ const slides = [
     setInterval(nextSlide, 6000);
   }
 
-  window.addEventListener('load', () => loadVideoSource(0), { once: true });
+  setTimeout(() => loadVideoSource(0), 200);
 </script>

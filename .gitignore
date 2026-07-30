@@ -23,6 +23,11 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# local image scratch files
+*.webp
+public/images/*.png
+public/images/*.jpg
+nul
+
 # wrangler / cloudflare
 .wrangler/
-nul

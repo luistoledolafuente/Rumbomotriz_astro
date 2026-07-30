@@ -23,10 +23,8 @@ const slides = [
             playsinline
             class="w-full h-full object-cover scale-105"
             aria-hidden="true"
-            data-src={index !== 0 ? slide.video : undefined}
-          >
-            {index === 0 ? <source src={slide.video} type="video/mp4" /> : null}
-          </video>
+            data-src={slide.video}
+          ></video>
         </div>
       ))}
     </div>
@@ -71,7 +69,6 @@ const slides = [
 </section>
 
 <script>
-  setTimeout(() => {
   const slides = document.querySelectorAll('.video-slide');
   let currentSlide = 0;
 
@@ -106,5 +103,6 @@ const slides = [
   if (slides.length > 1) {
     setInterval(nextSlide, 6000);
   }
-  }, 500);
+
+  window.addEventListener('load', () => loadVideoSource(0), { once: true });
 </script>

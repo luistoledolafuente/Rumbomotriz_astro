@@ -36,7 +36,7 @@ import Icon from "./Icon.astro";
         </a>
       </div>
 
-      <div class="flex md:hidden items-center gap-3">
+      <div class="flex md:hidden items-center gap-3 relative z-50">
         <ThemeToggle /> 
         <button id="mobile-menu-btn" class="text-white focus:outline-none p-2 active:scale-[0.92] transition-transform" aria-label="Abrir menú de navegación" type="button">
           <span id="menu-icon"><Icon name="menu" size={28} /></span>
@@ -46,9 +46,12 @@ import Icon from "./Icon.astro";
     </div>
   </div>
 
-  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] pointer-events-none opacity-0 transition-opacity duration-300"></div>
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 pointer-events-none opacity-0 transition-opacity duration-300"></div>
 
-  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 bg-background shadow-2xl z-[60] pointer-events-none translate-x-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] p-8">
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 bg-background shadow-2xl z-40 pointer-events-none translate-x-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] p-8">
+    <button id="mobile-close-btn" class="absolute top-5 right-5 text-foreground hover:text-primary transition-colors p-1 active:scale-[0.92]" aria-label="Cerrar menú" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
     <div class="flex flex-col justify-between h-full">
       <nav class="flex flex-col gap-6 mt-16" aria-label="Navegación móvil">
         <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#inicio">
@@ -94,6 +97,7 @@ import Icon from "./Icon.astro";
     const backdrop = document.getElementById('mobile-menu-backdrop');
     const menuIcon = document.getElementById('menu-icon');
     const menuLinks = document.querySelectorAll('.mobile-link');
+    const closeBtn = document.getElementById('mobile-close-btn');
 
     let isOpen = false;
     let closeTimer = null;
@@ -153,6 +157,8 @@ import Icon from "./Icon.astro";
       menuLinks.forEach(link => {
         link.addEventListener('click', closeMenu);
       });
+
+      closeBtn?.addEventListener('click', closeMenu);
     }
   }
 

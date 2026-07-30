@@ -5,23 +5,23 @@ import Icon from "./Icon.astro";
 
 <header 
   id="main-header"
-  class="fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-transparent group"
+  class="fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-background/90 backdrop-blur-md group"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
 
       <a href="/#" class="flex items-center gap-3" aria-label="Ir al inicio">
-        <img src="/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-10 w-auto transition-transform duration-300 hover:scale-110" />
-        <img src="/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-10 w-auto transition-transform duration-300 hover:scale-110" />
+        <img src="/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-16 w-auto transition-transform duration-300 hover:scale-110" />
+        <img src="/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-16 w-auto transition-transform duration-300 hover:scale-110" />
       </a>
 
       <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#inicio">Inicio</a>
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#sobre-nosotros">Sobre Nosotros</a>
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#servicios">Servicios</a>
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#proceso">Proceso</a>
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#testimonios">Testimonios</a>
-        <a class="text-base font-medium text-white group-[.is-scrolled]:text-white hover:text-primary transition-colors" href="/#contacto">Contacto</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#inicio">Inicio</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#sobre-nosotros">Sobre Nosotros</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#servicios">Servicios</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#proceso">Proceso</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#testimonios">Testimonios</a>
+        <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#contacto">Contacto</a>
       </nav>
 
       <div class="hidden md:flex items-center gap-4">
@@ -33,7 +33,7 @@ import Icon from "./Icon.astro";
 
       <div class="flex md:hidden items-center gap-3 relative z-50">
         <ThemeToggle /> 
-        <button id="mobile-menu-btn" class="text-white focus:outline-none p-2 active:scale-[0.92] transition-transform" aria-label="Abrir menú de navegación" type="button">
+        <button id="mobile-menu-btn" class="text-foreground focus:outline-none p-2 active:scale-[0.92] transition-transform" aria-label="Abrir menú de navegación" type="button">
           <span id="menu-icon"><Icon name="menu" size={28} /></span>
         </button>
       </div>
@@ -94,13 +94,7 @@ import Icon from "./Icon.astro";
     let closeTimer = null;
 
     function updateHeader() {
-      if (window.scrollY > 20) {
-        header?.classList.add('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
-        header?.classList.remove('bg-transparent');
-      } else {
-        header?.classList.remove('is-scrolled', 'bg-neutral-950/90', 'backdrop-blur-md', 'shadow-md');
-        header?.classList.add('bg-transparent');
-      }
+      header?.classList.toggle('shadow-md', window.scrollY > 20);
     }
 
     function openMenu() {

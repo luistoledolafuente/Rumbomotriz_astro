@@ -5,16 +5,18 @@ import Icon from "./Icon.astro";
 
 <header 
   id="main-header"
-  class="fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-background/90 backdrop-blur-md group"
+  class="fixed top-0 left-0 z-50 w-full transition-all duration-500 bg-background/90 backdrop-blur-md"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
 
-      <a href="/#" class="flex items-center gap-3" aria-label="Ir al inicio">
-        <img src="/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-25 w-auto" />
-        <img src="/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-25 w-auto" />
+      <!-- Logo -->
+      <a href="/#" class="flex items-center gap-3 relative z-50" aria-label="Ir al inicio">
+        <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-25 w-auto" />
+        <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-25 w-auto" />
       </a>
 
+      <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
         <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#inicio">Inicio</a>
         <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#sobre-nosotros">Sobre Nosotros</a>
@@ -24,137 +26,190 @@ import Icon from "./Icon.astro";
         <a class="text-base font-medium text-foreground hover:text-primary transition-colors" href="/#contacto">Contacto</a>
       </nav>
 
+      <!-- Desktop actions -->
       <div class="hidden md:flex items-center gap-4">
         <ThemeToggle />
-        <a class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30 active:scale-[0.97]" href="/#contacto">
+        <a
+          class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30 active:scale-[0.97]"
+          href="/#contacto"
+        >
           Cotizar Ahora
         </a>
       </div>
 
-      <div class="flex md:hidden items-center gap-3 relative z-50">
-        <ThemeToggle /> 
-        <button id="mobile-menu-btn" class="text-foreground focus:outline-none p-2 active:scale-[0.92] transition-transform" aria-label="Abrir menú de navegación" type="button">
-          <span id="menu-icon"><Icon name="menu" size={28} /></span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 pointer-events-none opacity-0 transition-opacity duration-300"></div>
-
-  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-80 bg-background shadow-2xl z-40 pointer-events-none translate-x-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] p-8">
-    <div class="flex flex-col justify-between h-full">
-      <nav class="flex flex-col gap-6 mt-16" aria-label="Navegación móvil">
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#inicio">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Inicio
-        </a>
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#sobre-nosotros">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Sobre Nosotros
-        </a>
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#servicios">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Servicios
-        </a>
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#proceso">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Proceso
-        </a>
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#testimonios">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Testimonios
-        </a>
-        <a class="mobile-link text-xl font-medium text-foreground hover:text-primary transition-colors flex items-center gap-3" href="/#contacto">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-          Contacto
-        </a>
-      </nav>
-      <a 
-        href="/#contacto"
-        class="w-full bg-primary text-white py-3 rounded-xl font-bold text-center text-base hover:bg-primary-dark transition-colors shadow-lg active:scale-[0.97]"
+      <!-- Mobile: hamburger button only (ThemeToggle moves inside the panel) -->
+      <button
+        id="mobile-menu-btn"
+        class="flex md:hidden items-center justify-center w-10 h-10 text-foreground focus:outline-none active:scale-[0.92] transition-transform relative z-[60]"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        type="button"
       >
-        Cotizar Ahora
-      </a>
+        <span id="menu-icon"><Icon name="menu" size={28} /></span>
+      </button>
+
     </div>
   </div>
 </header>
 
+<!-- ── Backdrop ── -->
+<div
+  id="mobile-menu-backdrop"
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] pointer-events-none opacity-0 transition-opacity duration-300"
+  aria-hidden="true"
+></div>
+
+<!-- ── Slide-in panel ── -->
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 h-full w-[min(320px,85vw)] bg-background shadow-2xl z-[60] pointer-events-none translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] flex flex-col"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  <!-- Panel header: logo + theme toggle + close -->
+  <div class="flex items-center justify-between px-6 h-20 border-b border-border shrink-0">
+    <a href="/#" class="flex items-center gap-2" tabindex="-1" aria-hidden="true">
+      <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-8 w-auto" />
+      <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-8 w-auto" />
+    </a>
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+      <button
+        id="mobile-menu-close"
+        class="flex items-center justify-center w-10 h-10 text-foreground hover:text-primary active:scale-[0.92] transition-all focus:outline-none"
+        aria-label="Cerrar menú"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Nav links -->
+  <nav class="flex flex-col gap-1 px-4 pt-6 flex-1 overflow-y-auto" aria-label="Navegación móvil">
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#inicio">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Inicio
+    </a>
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#sobre-nosotros">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Sobre Nosotros
+    </a>
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#servicios">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Servicios
+    </a>
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#proceso">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Proceso
+    </a>
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#testimonios">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Testimonios
+    </a>
+    <a class="mobile-link group flex items-center gap-4 px-4 py-3.5 rounded-xl text-lg font-medium text-foreground hover:text-primary hover:bg-primary/8 transition-all" href="/#contacto">
+      <span class="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary transition-colors shrink-0"></span>
+      Contacto
+    </a>
+  </nav>
+
+  <!-- CTA button pinned at the bottom -->
+  <div class="px-6 pb-10 pt-6 shrink-0">
+    <a
+      href="/#contacto"
+      class="mobile-link block w-full bg-primary text-white py-3.5 rounded-xl font-bold text-center text-base hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 active:scale-[0.97]"
+    >
+      Cotizar Ahora
+    </a>
+  </div>
+</div>
+
 <script>
   function setupHeader() {
-    const header = document.getElementById('main-header');
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const backdrop = document.getElementById('mobile-menu-backdrop');
-    const menuIcon = document.getElementById('menu-icon');
+    const header    = document.getElementById('main-header');
+    const menuBtn   = document.getElementById('mobile-menu-btn');
+    const closeBtn  = document.getElementById('mobile-menu-close');
+    const menu      = document.getElementById('mobile-menu');
+    const backdrop  = document.getElementById('mobile-menu-backdrop');
     const menuLinks = document.querySelectorAll('.mobile-link');
 
     let isOpen = false;
-    let closeTimer = null;
+    let closeTimer: ReturnType<typeof setTimeout> | null = null;
 
+    /* ── scroll shadow ── */
     function updateHeader() {
       header?.classList.toggle('shadow-md', window.scrollY > 20);
     }
 
+    /* ── open ── */
     function openMenu() {
       if (closeTimer) clearTimeout(closeTimer);
       isOpen = true;
+
       backdrop?.classList.remove('pointer-events-none', 'opacity-0');
-      backdrop?.classList.add('opacity-100');
-      menu?.classList.remove('pointer-events-none');
-      requestAnimationFrame(() => {
-        menu?.classList.remove('translate-x-full');
-        menu?.classList.add('translate-x-0');
-      });
-      if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      backdrop?.classList.add('opacity-100', 'pointer-events-auto');
+
+      menu?.classList.remove('pointer-events-none', 'translate-x-full');
+      menu?.classList.add('translate-x-0');
+
+      menuBtn?.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     }
 
+    /* ── close ── */
     function closeMenu() {
       isOpen = false;
-      backdrop?.classList.remove('opacity-100');
+
+      backdrop?.classList.remove('opacity-100', 'pointer-events-auto');
       backdrop?.classList.add('opacity-0', 'pointer-events-none');
+
       menu?.classList.remove('translate-x-0');
       menu?.classList.add('translate-x-full');
+
       closeTimer = setTimeout(() => {
         menu?.classList.add('pointer-events-none');
       }, 320);
-      if (menuIcon) menuIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+
+      menuBtn?.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
 
+    /* ── toggle ── */
     function toggleMenu() {
       isOpen ? closeMenu() : openMenu();
     }
 
+    /* ── scroll listener ── */
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        requestAnimationFrame(() => {
-          updateHeader();
-          ticking = false;
-        });
+        requestAnimationFrame(() => { updateHeader(); ticking = false; });
         ticking = true;
       }
-    });
+    }, { passive: true });
     updateHeader();
 
-    if (menuBtn && menu) {
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-      });
+    /* ── button listeners ── */
+    menuBtn?.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
 
-      backdrop?.addEventListener('click', closeMenu);
-
-      menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          closeMenu();
-          requestAnimationFrame(() => requestAnimationFrame(updateHeader));
-        });
+    /* ── close on link click ── */
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+        requestAnimationFrame(() => requestAnimationFrame(updateHeader));
       });
-    }
+    });
+
+    /* ── close on Escape ── */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
   }
 
   if ('requestIdleCallback' in window) {

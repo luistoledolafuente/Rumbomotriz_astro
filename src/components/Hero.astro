@@ -71,6 +71,7 @@ const slides = [
 </section>
 
 <script>
+  setTimeout(() => {
   const slides = document.querySelectorAll('.video-slide');
   let currentSlide = 0;
 
@@ -105,4 +106,5 @@ const slides = [
   if (slides.length > 1) {
     setInterval(nextSlide, 6000);
   }
+  }, 500);
 </script>

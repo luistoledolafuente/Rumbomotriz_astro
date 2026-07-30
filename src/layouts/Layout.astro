@@ -12,7 +12,7 @@ export interface Props {
 }
 
 const A = import.meta.env.PUBLIC_ASSETS_URL || '';
-const defaultImage = `${A}/images/hero-background.png`;
+const defaultImage = `${A}/images/hero-background.webp`;
 
 const { 
   title, 
@@ -78,7 +78,7 @@ const {
   </script>
 
   <link rel="preconnect" href="https://cdn.rumbomotriz.com" />
-  <link rel="preload" href={`${A}/images/hero.webp`} as="image" />
+  <link rel="preload" href={`${A}/images/hero-sm.webp`} as="image" imagesrcset={`${A}/images/hero-md.webp 1200w, ${A}/images/hero-sm.webp 800w`} imagesizes="100vw" />
   <link rel="dns-prefetch" href="https://cdn.rumbomotriz.com" />
 </head>
 

@@ -2,13 +2,14 @@
 import Icon from "./Icon.astro";
 
 const A = import.meta.env.PUBLIC_ASSETS_URL || '';
-const heroImg = `${A}/images/hero.webp`;
+const heroSm = `${A}/images/hero-sm.webp`;
+const heroMd = `${A}/images/hero-md.webp`;
 ---
 
 <section class="w-full py-20" id="inicio" aria-label="Hero principal">
   <div class="relative w-full min-h-[70vh] flex flex-col gap-8 items-center justify-center p-8 text-center overflow-hidden shadow-2xl bg-black group">
     
-    <img src={heroImg} alt="" class="absolute inset-0 w-full h-full object-cover z-0" fetchpriority="high" aria-hidden="true" />
+    <img src={heroSm} alt="" srcset={`${heroMd} 1200w, ${heroSm} 800w`} sizes="100vw" class="absolute inset-0 w-full h-full object-cover z-0" fetchpriority="high" aria-hidden="true" />
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
 
     <div class="relative z-20 flex flex-col gap-6 max-w-4xl">

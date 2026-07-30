@@ -168,5 +168,9 @@ import Icon from "./Icon.astro";
     }
   }
 
-  setupHeader();
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(setupHeader, { timeout: 500 });
+  } else {
+    setTimeout(setupHeader, 200);
+  }
 </script>

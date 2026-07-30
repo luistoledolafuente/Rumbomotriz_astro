@@ -160,7 +160,10 @@ import Icon from "./Icon.astro";
       backdrop?.addEventListener('click', closeMenu);
 
       menuLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', () => {
+          closeMenu();
+          requestAnimationFrame(() => requestAnimationFrame(updateHeader));
+        });
       });
     }
   }

@@ -25,9 +25,6 @@ pnpm-debug.log*
 
 # local image scratch files
 *.webp
-public/images/*.png
-public/images/*.jpg
-nul
 
 # wrangler / cloudflare
 .wrangler/

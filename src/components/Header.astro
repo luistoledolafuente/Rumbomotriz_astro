@@ -12,8 +12,8 @@ import Icon from "./Icon.astro";
 
       <!-- Logo -->
       <a href="/#" class="flex items-center gap-3 relative z-50" aria-label="Ir al inicio">
-        <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-25 w-auto" />
-        <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-25 w-auto" />
+        <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="Rumbomotriz" width="842" height="432" class="block dark:hidden h-25 w-auto" fetchpriority="high" decoding="sync" />
+        <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="Rumbomotriz" width="842" height="432" class="hidden dark:block h-25 w-auto" fetchpriority="high" decoding="sync" />
       </a>
 
       <!-- Desktop nav -->
@@ -70,8 +70,8 @@ import Icon from "./Icon.astro";
   <!-- Panel header: logo + theme toggle + close -->
   <div class="flex items-center justify-between px-6 h-20 border-b border-border shrink-0">
     <a href="/#" class="flex items-center gap-2" tabindex="-1" aria-hidden="true">
-      <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="Rumbomotriz" class="block dark:hidden h-8 w-auto" />
-      <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="Rumbomotriz" class="hidden dark:block h-8 w-auto" />
+      <img src="https://cdn.rumbomotriz.com/images/modo.claro.png" alt="" width="842" height="432" class="block dark:hidden h-12 w-auto" decoding="async" />
+      <img src="https://cdn.rumbomotriz.com/images/modo-oscuro.png" alt="" width="842" height="432" class="hidden dark:block h-12 w-auto" decoding="async" />
     </a>
     <div class="flex items-center gap-2">
       <ThemeToggle />

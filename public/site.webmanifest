@@ -1,0 +1,17 @@
+{
+  "name": "Rumbomotriz",
+  "short_name": "Rumbomotriz",
+  "description": "Soluciones Integrales en Neumáticos y Rencauche para la Minería y Transporte en Perú.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#d10000",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
